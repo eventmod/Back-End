@@ -13,5 +13,4 @@ public class EventModApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EventModApplication.class, args);
 	}
-
 }

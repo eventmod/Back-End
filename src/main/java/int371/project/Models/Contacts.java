@@ -1,0 +1,74 @@
+package int371.project.Models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Contacts")
+public class Contacts {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "C_ID")
+	private String C_ID;
+
+	@Column(name = "C_Name")
+	private String C_Name;
+
+	@Column(name = "C_Phone")
+	private String C_Phone;
+
+	@Column(name = "C_Email")
+	private String C_Email;
+
+	@Column(name = "Ev_ID")
+	private String Ev_ID;
+
+//	Getter
+
+	public String getC_ID() {
+		return C_ID;
+	}
+
+	public String getC_Name() {
+		return C_Name;
+	}
+
+	public String getC_Phone() {
+		return C_Phone;
+	}
+
+	public String getC_Email() {
+		return C_Email;
+	}
+
+	public String getEv_ID() {
+		return Ev_ID;
+	}
+
+//	Setter
+
+	public void setC_ID(String c_ID) {
+		C_ID = c_ID;
+	}
+
+	public void setC_Name(String c_Name) {
+		C_Name = c_Name;
+	}
+
+	public void setC_Phone(String c_Phone) {
+		C_Phone = c_Phone;
+	}
+
+	public void setC_Email(String c_Email) {
+		C_Email = c_Email;
+	}
+
+	public void setEv_ID(String ev_ID) {
+		Ev_ID = ev_ID;
+	}
+}
