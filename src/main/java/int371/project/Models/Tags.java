@@ -20,7 +20,7 @@ public class Tags {
 	private String Tag_Name;
 
 //	Getter
-	
+
 	public String getTag_ID() {
 		return Tag_ID;
 	}
@@ -30,7 +30,7 @@ public class Tags {
 	}
 
 //	Setter
-	
+
 	public void setTag_ID(String tag_ID) {
 		Tag_ID = tag_ID;
 	}

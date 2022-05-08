@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +30,14 @@ public class Accounts {
 	@Column(name = "F_ID")
 	private String F_ID;
 
+	@OneToOne
+	@JoinColumn(name = "R_ID", insertable = false, updatable = false)
+	Roles roles;
+
+	@OneToOne
+	@JoinColumn(name = "F_ID", insertable = false, updatable = false)
+	Facultys facultys;
+
 //	Getter
 
 	public String getAc_ID() {
@@ -50,7 +60,15 @@ public class Accounts {
 		return F_ID;
 	}
 
-//	Getter
+	public Facultys getFacultys() {
+		return facultys;
+	}
+
+	public Roles getRoles() {
+		return roles;
+	}
+
+//	Setter
 
 	public void setAc_ID(String ac_ID) {
 		Ac_ID = ac_ID;
@@ -70,5 +88,13 @@ public class Accounts {
 
 	public void setF_ID(String f_ID) {
 		F_ID = f_ID;
+	}
+
+	public void setFacultys(Facultys facultys) {
+		this.facultys = facultys;
+	}
+
+	public void setRoles(Roles roles) {
+		this.roles = roles;
 	}
 }

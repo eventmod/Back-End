@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +25,10 @@ public class Roles {
 	@Column(name = "Ac_ID")
 	private String Ac_ID;
 
+	@OneToMany
+	@JoinColumn(name = "Ac_ID", insertable = false, updatable = false)
+	Accounts accounts;
+
 //	Getter
 
 	public String getR_ID() {
@@ -36,6 +43,10 @@ public class Roles {
 		return Ac_ID;
 	}
 
+	public Accounts getAccounts() {
+		return accounts;
+	}
+
 //	Setter
 
 	public void setR_ID(String r_ID) {
@@ -48,5 +59,9 @@ public class Roles {
 
 	public void setAc_ID(String ac_ID) {
 		Ac_ID = ac_ID;
+	}
+
+	public void setAccounts(Accounts accounts) {
+		this.accounts = accounts;
 	}
 }

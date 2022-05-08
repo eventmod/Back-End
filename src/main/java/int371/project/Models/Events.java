@@ -1,10 +1,16 @@
 package int371.project.Models;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +24,9 @@ public class Events {
 
 	@Column(name = "Ev_Name")
 	private String Ev_Name;
+
+	@Column(name = "Ev_Cover")
+	private String Ev_Cover;
 
 	@Column(name = "Ev_Description")
 	private String Ev_Description;
@@ -43,6 +52,21 @@ public class Events {
 	@Column(name = "C_ID")
 	private String C_ID;
 
+	@OneToOne
+	@JoinColumn(name = "Ac_ID", insertable = false, updatable = false)
+	Accounts accounts;
+
+	@OneToOne
+	@JoinColumn(name = "D_ID", insertable = false, updatable = false)
+	Dates dates;
+
+	@OneToOne
+	@JoinColumn(name = "C_ID", insertable = false, updatable = false)
+	Contacts contacts;
+
+	@OneToMany(mappedBy = "Events", cascade = CascadeType.ALL, orphanRemoval = true)
+	Set<Event_Have_Tags> event_have_tags;
+
 //	Getter
 
 	public String getEv_ID() {
@@ -51,6 +75,10 @@ public class Events {
 
 	public String getEv_Name() {
 		return Ev_Name;
+	}
+
+	public String getEv_Cover() {
+		return Ev_Cover;
 	}
 
 	public String getEv_Description() {
@@ -93,6 +121,10 @@ public class Events {
 
 	public void setEv_Name(String ev_Name) {
 		Ev_Name = ev_Name;
+	}
+
+	public void setEv_Cover(String ev_Cover) {
+		Ev_Cover = ev_Cover;
 	}
 
 	public void setEv_Description(String ev_Description) {

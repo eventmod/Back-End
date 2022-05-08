@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +23,14 @@ public class Event_Have_Tags {
 
 	@Column(name = "Tag_ID")
 	private String Tag_ID;
+
+	@ManyToOne
+	@JoinColumn(name = "Ev_ID", insertable = false, updatable = false)
+	Events events;
+
+	@ManyToOne
+	@JoinColumn(name = "Tag_ID", insertable = false, updatable = false)
+	Tags tags;
 
 //	Getter
 
