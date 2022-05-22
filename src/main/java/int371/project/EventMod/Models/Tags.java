@@ -1,10 +1,14 @@
 package int371.project.EventMod.Models;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +22,9 @@ public class Tags {
 
 	@Column(name = "Tag_Name")
 	private String Tag_Name;
+	
+	@OneToMany(mappedBy = "tags", cascade = CascadeType.ALL, orphanRemoval = true)
+	Set<Event_Have_Tags> event_have_tags;
 
 //	Getter
 

@@ -25,9 +25,9 @@ public class Roles {
 	@Column(name = "Ac_ID")
 	private String Ac_ID;
 
-	@OneToMany
-	@JoinColumn(name = "Ac_ID", insertable = false, updatable = false)
-	Accounts accounts;
+//	@OneToMany
+//	@JoinColumn(name = "Ac_ID", insertable = false, updatable = false)
+//	Accounts accounts;
 
 //	Getter
 
@@ -43,9 +43,9 @@ public class Roles {
 		return Ac_ID;
 	}
 
-	public Accounts getAccounts() {
-		return accounts;
-	}
+//	public Accounts getAccounts() {
+//		return accounts;
+//	}
 
 //	Setter
 
@@ -61,7 +61,7 @@ public class Roles {
 		Ac_ID = ac_ID;
 	}
 
-	public void setAccounts(Accounts accounts) {
-		this.accounts = accounts;
-	}
+//	public void setAccounts(Accounts accounts) {
+//		this.accounts = accounts;
+//	}
 }

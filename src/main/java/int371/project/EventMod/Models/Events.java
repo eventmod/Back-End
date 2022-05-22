@@ -64,7 +64,7 @@ public class Events {
 	@JoinColumn(name = "C_ID", insertable = false, updatable = false)
 	Contacts contacts;
 
-	@OneToMany(mappedBy = "Events", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "events", cascade = CascadeType.ALL, orphanRemoval = true)
 	Set<Event_Have_Tags> event_have_tags;
 
 //	Getter
