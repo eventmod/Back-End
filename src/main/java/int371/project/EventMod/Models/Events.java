@@ -1,4 +1,4 @@
-package int371.project.Models;
+package int371.project.EventMod.Models;
 
 import java.util.Set;
 

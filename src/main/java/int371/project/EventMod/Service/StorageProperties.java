@@ -1,4 +1,4 @@
-package int371.project.Service;
+package int371.project.EventMod.Service;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
