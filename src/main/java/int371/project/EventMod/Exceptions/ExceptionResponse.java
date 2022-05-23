@@ -5,7 +5,8 @@ import java.time.LocalDateTime;
 public class ExceptionResponse {
 
 	public static enum ERROR_CODE {
-		Events_ID_DOES_NOT_EXIST(1000), EVENTS_NAME_ALREADY_EXIST(1001);
+		EVENTS_ID_DOES_NOT_EXIST(1000), EVENTS_NAME_ALREADY_EXIST(1001),
+		EVENTS_NAME_DOES_NOT_EXIST(1003);
 
 		private int errorValue;
 
