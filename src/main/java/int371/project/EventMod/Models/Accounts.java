@@ -16,7 +16,7 @@ public class Accounts {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Ac_ID")
-	private String Ac_ID;
+	private int Ac_ID;
 
 	@Column(name = "Ac_Name")
 	private String Ac_Name;
@@ -24,23 +24,19 @@ public class Accounts {
 	@Column(name = "Ac_Description")
 	private String Ac_Description;
 
+	@Column(name = "Ac_Faculty")
+	private String Ac_Faculty;
+
 	@Column(name = "R_ID")
 	private String R_ID;
-
-	@Column(name = "F_ID")
-	private String F_ID;
 
 	@OneToOne
 	@JoinColumn(name = "R_ID", insertable = false, updatable = false)
 	Roles roles;
 
-	@OneToOne
-	@JoinColumn(name = "F_ID", insertable = false, updatable = false)
-	Facultys facultys;
-
 //	Getter
 
-	public String getAc_ID() {
+	public int getAc_ID() {
 		return Ac_ID;
 	}
 
@@ -52,16 +48,12 @@ public class Accounts {
 		return Ac_Description;
 	}
 
+	public String getAc_Faculty() {
+		return Ac_Faculty;
+	}
+
 	public String getR_ID() {
 		return R_ID;
-	}
-
-	public String getF_ID() {
-		return F_ID;
-	}
-
-	public Facultys getFacultys() {
-		return facultys;
 	}
 
 	public Roles getRoles() {
@@ -70,7 +62,7 @@ public class Accounts {
 
 //	Setter
 
-	public void setAc_ID(String ac_ID) {
+	public void setAc_ID(int ac_ID) {
 		Ac_ID = ac_ID;
 	}
 
@@ -82,16 +74,12 @@ public class Accounts {
 		Ac_Description = ac_Description;
 	}
 
+	public void setAc_Faculty(String ac_Faculty) {
+		Ac_Faculty = ac_Faculty;
+	}
+
 	public void setR_ID(String r_ID) {
 		R_ID = r_ID;
-	}
-
-	public void setF_ID(String f_ID) {
-		F_ID = f_ID;
-	}
-
-	public void setFacultys(Facultys facultys) {
-		this.facultys = facultys;
 	}
 
 	public void setRoles(Roles roles) {

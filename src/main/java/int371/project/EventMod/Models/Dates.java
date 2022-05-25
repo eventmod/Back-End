@@ -18,16 +18,16 @@ public class Dates {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "D_ID")
-	private String D_ID;
+	private int D_ID;
 
-	@Column(name = "D_SDate")
-	private java.sql.Date D_SDate;
+	@Column(name = "D_StartDate")
+	private java.sql.Date D_StartDate;
 
-	@Column(name = "D_StDate")
-	private java.sql.Date D_StDate;
+	@Column(name = "D_EndDate")
+	private java.sql.Date D_EndDate;
 
 	@Column(name = "Ev_ID")
-	private String Ev_ID;
+	private int Ev_ID;
 
 	@OneToOne
 	@JoinColumn(name = "Ev_ID", insertable = false, updatable = false)
@@ -35,37 +35,45 @@ public class Dates {
 
 //	Getter
 
-	public String getD_ID() {
+	public int getD_ID() {
 		return D_ID;
 	}
 
-	public java.sql.Date getD_SDate() {
-		return D_SDate;
+	public java.sql.Date getD_StartDate() {
+		return D_StartDate;
 	}
 
-	public java.sql.Date getD_StDate() {
-		return D_StDate;
+	public java.sql.Date getD_EndDate() {
+		return D_EndDate;
 	}
 
-	public String getEv_ID() {
+	public int getEv_ID() {
 		return Ev_ID;
+	}
+
+	public Events getEvents() {
+		return events;
 	}
 
 //	Setter
 
-	public void setD_ID(String d_ID) {
+	public void setD_ID(int d_ID) {
 		D_ID = d_ID;
 	}
 
-	public void setD_SDate(java.sql.Date d_SDate) {
-		D_SDate = d_SDate;
+	public void setD_StartDate(java.sql.Date d_StartDate) {
+		D_StartDate = d_StartDate;
 	}
 
-	public void setD_StDate(java.sql.Date d_StDate) {
-		D_StDate = d_StDate;
+	public void setD_EndDate(java.sql.Date d_EndDate) {
+		D_EndDate = d_EndDate;
 	}
 
-	public void setEv_ID(String ev_ID) {
+	public void setEv_ID(int ev_ID) {
 		Ev_ID = ev_ID;
+	}
+
+	public void setEvents(Events events) {
+		this.events = events;
 	}
 }

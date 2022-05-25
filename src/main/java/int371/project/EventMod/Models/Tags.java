@@ -18,17 +18,17 @@ public class Tags {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Tag_ID")
-	private String Tag_ID;
+	private int Tag_ID;
 
 	@Column(name = "Tag_Name")
 	private String Tag_Name;
-	
+
 	@OneToMany(mappedBy = "tags", cascade = CascadeType.ALL, orphanRemoval = true)
-	Set<Event_Have_Tags> event_have_tags;
+	Set<EventsHaveTags> event_have_tags;
 
 //	Getter
 
-	public String getTag_ID() {
+	public int getTag_ID() {
 		return Tag_ID;
 	}
 
@@ -36,13 +36,21 @@ public class Tags {
 		return Tag_Name;
 	}
 
+	public Set<EventsHaveTags> getEvent_have_tags() {
+		return event_have_tags;
+	}
+
 //	Setter
 
-	public void setTag_ID(String tag_ID) {
+	public void setTag_ID(int tag_ID) {
 		Tag_ID = tag_ID;
 	}
 
 	public void setTag_Name(String tag_Name) {
 		Tag_Name = tag_Name;
+	}
+
+	public void setEvent_have_tags(Set<EventsHaveTags> event_have_tags) {
+		this.event_have_tags = event_have_tags;
 	}
 }

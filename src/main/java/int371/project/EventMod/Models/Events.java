@@ -20,7 +20,7 @@ public class Events {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Ev_ID")
-	private String Ev_ID;
+	private int Ev_ID;
 
 	@Column(name = "Ev_Name")
 	private String Ev_Name;
@@ -43,33 +43,25 @@ public class Events {
 	@Column(name = "Ev_Year")
 	private String Ev_Year;
 
+	@Column(name = "Ev_StartRegis")
+	private String Ev_StartRegis;
+
+	@Column(name = "Ev_EndRegis")
+	private String Ev_EndRegis;
+
 	@Column(name = "Ac_ID")
 	private String Ac_ID;
-
-	@Column(name = "D_ID")
-	private String D_ID;
-
-	@Column(name = "C_ID")
-	private String C_ID;
 
 	@OneToOne
 	@JoinColumn(name = "Ac_ID", insertable = false, updatable = false)
 	Accounts accounts;
 
-	@OneToOne
-	@JoinColumn(name = "D_ID", insertable = false, updatable = false)
-	Dates dates;
-
-	@OneToOne
-	@JoinColumn(name = "C_ID", insertable = false, updatable = false)
-	Contacts contacts;
-
 	@OneToMany(mappedBy = "events", cascade = CascadeType.ALL, orphanRemoval = true)
-	Set<Event_Have_Tags> event_have_tags;
+	Set<EventsHaveTags> event_have_tags;
 
 //	Getter
 
-	public String getEv_ID() {
+	public int getEv_ID() {
 		return Ev_ID;
 	}
 
@@ -101,21 +93,29 @@ public class Events {
 		return Ev_Year;
 	}
 
+	public String getEv_StartRegis() {
+		return Ev_StartRegis;
+	}
+
+	public String getEv_EndRegis() {
+		return Ev_EndRegis;
+	}
+
 	public String getAc_ID() {
 		return Ac_ID;
 	}
 
-	public String getD_ID() {
-		return D_ID;
-	}
-
-	public String getC_ID() {
-		return C_ID;
+	public Accounts getAccounts() {
+		return accounts;
 	}
 
 //	Setter
 
-	public void setEv_ID(String ev_ID) {
+	public Set<EventsHaveTags> getEvent_have_tags() {
+		return event_have_tags;
+	}
+
+	public void setEv_ID(int ev_ID) {
 		Ev_ID = ev_ID;
 	}
 
@@ -147,15 +147,23 @@ public class Events {
 		Ev_Year = ev_Year;
 	}
 
+	public void setEv_StartRegis(String ev_StartRegis) {
+		Ev_StartRegis = ev_StartRegis;
+	}
+
+	public void setEv_EndRegis(String ev_EndRegis) {
+		Ev_EndRegis = ev_EndRegis;
+	}
+
 	public void setAc_ID(String ac_ID) {
 		Ac_ID = ac_ID;
 	}
 
-	public void setD_ID(String d_ID) {
-		D_ID = d_ID;
+	public void setAccounts(Accounts accounts) {
+		this.accounts = accounts;
 	}
 
-	public void setC_ID(String c_ID) {
-		C_ID = c_ID;
+	public void setEvent_have_tags(Set<EventsHaveTags> event_have_tags) {
+		this.event_have_tags = event_have_tags;
 	}
 }

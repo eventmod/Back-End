@@ -16,7 +16,7 @@ public class Contacts {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "C_ID")
-	private String C_ID;
+	private int C_ID;
 
 	@Column(name = "C_Name")
 	private String C_Name;
@@ -36,7 +36,7 @@ public class Contacts {
 
 //	Getter
 
-	public String getC_ID() {
+	public int getC_ID() {
 		return C_ID;
 	}
 
@@ -56,9 +56,13 @@ public class Contacts {
 		return Ev_ID;
 	}
 
+	public Events getEvents() {
+		return events;
+	}
+
 //	Setter
 
-	public void setC_ID(String c_ID) {
+	public void setC_ID(int c_ID) {
 		C_ID = c_ID;
 	}
 
@@ -76,5 +80,9 @@ public class Contacts {
 
 	public void setEv_ID(String ev_ID) {
 		Ev_ID = ev_ID;
+	}
+
+	public void setEvents(Events events) {
+		this.events = events;
 	}
 }
