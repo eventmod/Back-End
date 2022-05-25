@@ -1,7 +1,8 @@
 package int371.project.EventMod.Models;
 
+import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,10 +45,10 @@ public class Events {
 	private String Ev_Year;
 
 	@Column(name = "Ev_StartRegis")
-	private String Ev_StartRegis;
+	private Timestamp Ev_StartRegis;
 
 	@Column(name = "Ev_EndRegis")
-	private String Ev_EndRegis;
+	private Timestamp Ev_EndRegis;
 
 	@Column(name = "Ac_ID")
 	private String Ac_ID;
@@ -93,16 +94,16 @@ public class Events {
 		return Ev_Year;
 	}
 
-	public String getEv_StartRegis() {
+	public Timestamp getEv_StartRegis() {
 		return Ev_StartRegis;
 	}
 
-	public String getEv_EndRegis() {
+	public Timestamp getEv_EndRegis() {
 		return Ev_EndRegis;
 	}
 
 	// public String getAc_ID() {
-	// 	return Ac_ID;
+	// return Ac_ID;
 	// }
 
 	public Accounts getAccounts() {
@@ -147,11 +148,11 @@ public class Events {
 		Ev_Year = ev_Year;
 	}
 
-	public void setEv_StartRegis(String ev_StartRegis) {
+	public void setEv_StartRegis(Timestamp ev_StartRegis) {
 		Ev_StartRegis = ev_StartRegis;
 	}
 
-	public void setEv_EndRegis(String ev_EndRegis) {
+	public void setEv_EndRegis(Timestamp ev_EndRegis) {
 		Ev_EndRegis = ev_EndRegis;
 	}
 

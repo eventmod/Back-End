@@ -3,15 +3,20 @@ package int371.project.EventMod.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.multipart.MultipartFile;
 import int371.project.EventMod.Exceptions.EventsException;
 import int371.project.EventMod.Exceptions.ExceptionResponse;
 import int371.project.EventMod.Models.Events;
 import int371.project.EventMod.Repositories.EventsJpaRepository;
+import int371.project.EventMod.Service.StorageService;
 
 @CrossOrigin
 @RestController
@@ -19,12 +24,12 @@ public class EventsController {
 	@Autowired
 	private EventsJpaRepository eventsJpa;
 
-//	final StorageService storageService;
-//
-//	@Autowired
-//	public EventsController(StorageService storageService) {
-//		this.storageService = storageService;
-//	}
+	final StorageService storageService;
+
+	@Autowired
+	public EventsController(StorageService storageService) {
+		this.storageService = storageService;
+	}
 
 ////---------------------------------- GetMapping ----------------------------------
 	// Show a list of all events.
@@ -33,7 +38,7 @@ public class EventsController {
 		return eventsJpa.findAll();
 	}
 
-	// Show list of events by Ev_ID (test POSTMAN)
+	// Show list of events by Ev_ID (Test Postman)
 	@GetMapping("/events/{Ev_ID}")
 	public Events showEventByID(@PathVariable int Ev_ID) {
 		Events event = this.eventsJpa.findById(Ev_ID).orElse(null);
@@ -44,14 +49,26 @@ public class EventsController {
 		return event;
 	}
 
-	// Show list of events by Ev_Name
-//	@GetMapping("/events/{Ev_Name}")
-//	public Events showEventByName(@PathVariable String Ev_Name) {
-//		Events event = this.eventsJpa.findAllById(Ev_Name).orElse(null);
-//		if (event == null) {
-//			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_NAME_DOES_NOT_EXIST,
-//					"Event Name : " + Ev_Name + " does not exist ");
-//		}
-//		return event;
+	// browse images files
+	@GetMapping(value = "/Files/{filename:.+}", produces = MediaType.IMAGE_JPEG_VALUE)
+	public Resource serveProduct(@PathVariable String filename) {
+		return storageService.loadAsResource(filename);
+	}
+	
+//  ---------------------------------- PostMapping ----------------------------------
+	// add product with add image
+//	@PostMapping("/addProductWithImage")
+//	public String createProduct(@RequestParam("Events") String newEvent, @RequestParam("file") MultipartFile file) {
+//		Events event = new Gson().fromJson(newEvent, Events.class);
+//		eventsJpa.save(event);
+//		handleFileUpload(file);
+//		return "Complete";
 //	}
+
+	// add a image
+	@PostMapping("/uploadImage")
+	public String handleFileUpload(@RequestParam("file") MultipartFile file) {
+		storageService.store(file);
+		return file.getOriginalFilename() + "Upload complete";
+	}
 }
