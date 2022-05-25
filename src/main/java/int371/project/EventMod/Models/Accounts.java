@@ -52,9 +52,9 @@ public class Accounts {
 		return Ac_Faculty;
 	}
 
-	public String getR_ID() {
-		return R_ID;
-	}
+	// public String getR_ID() {
+	// 	return R_ID;
+	// }
 
 	public Roles getRoles() {
 		return roles;

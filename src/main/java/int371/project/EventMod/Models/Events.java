@@ -101,9 +101,9 @@ public class Events {
 		return Ev_EndRegis;
 	}
 
-	public String getAc_ID() {
-		return Ac_ID;
-	}
+	// public String getAc_ID() {
+	// 	return Ac_ID;
+	// }
 
 	public Accounts getAccounts() {
 		return accounts;

@@ -36,9 +36,9 @@ public class Tags {
 		return Tag_Name;
 	}
 
-	public Set<EventsHaveTags> getEvent_have_tags() {
-		return event_have_tags;
-	}
+	// public Set<EventsHaveTags> getEvent_have_tags() {
+	// 	return event_have_tags;
+	// }
 
 //	Setter
 

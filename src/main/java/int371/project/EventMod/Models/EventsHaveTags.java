@@ -38,21 +38,21 @@ public class EventsHaveTags {
 		return EventTag_ID;
 	}
 
-	public int getEv_ID() {
-		return Ev_ID;
-	}
+	// public int getEv_ID() {
+	// 	return Ev_ID;
+	// }
 
-	public int getTag_ID() {
-		return Tag_ID;
-	}
+	// public int getTag_ID() {
+	// 	return Tag_ID;
+	// }
 
 //	public Events getEvents() {
 //		return events;
 //	}
 //
-//	public Tags getTags() {
-//		return tags;
-//	}
+	public Tags getTags() {
+		return tags;
+	}
 
 //	Setter
 
