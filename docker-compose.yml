@@ -1,9 +1,9 @@
-version: '1'
+version: '3'
 services:
     backend:
         container_name: backend
         build: .
-        image: ghcr.io/chicky0/eventmod-backend:latest
+        image: backend:latest
         volumes:
             - /home/eventmod/Back-End/public:/tmp
         ports:
@@ -12,5 +12,5 @@ services:
 
 networks:
     default :
-        eventmod-network:
-            external: true
+        external:
+            eventmod-network
