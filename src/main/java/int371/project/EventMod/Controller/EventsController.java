@@ -2,6 +2,8 @@ package int371.project.EventMod.Controller;
 
 import java.util.List;
 
+import com.google.gson.Gson;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
@@ -60,12 +62,12 @@ public class EventsController {
 	// Add event
 	@PostMapping("/addEvent")
 	public void createEvent(@RequestBody Events newEvent) {
-		List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventName(newEvent.getEv_Name());
+		List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventName(newEvent.getEventName());
 		if (checkDuplicateEventName.size() == 0) {
 			this.eventsJpa.save(newEvent);
 		} else {
 			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_NAME_ALREADY_EXIST,
-					"Event name" +" : "+ newEvent.getEv_Name()+" "+ "already exist");
+					"Event name" +" : "+ newEvent.getEventName()+" "+ "already exist");
 		}
 //		return "Add Event Complete";
 	}
@@ -73,13 +75,13 @@ public class EventsController {
 	// Add event with Add image
 	@PostMapping("/addEventWithImg")
 	public void createEventWithImg(@RequestBody Events newEvent, @RequestParam("file") MultipartFile file) {
-		List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventName(newEvent.getEv_Name());
+		List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventName(newEvent.getEventName());
 		if (checkDuplicateEventName.size() == 0) {
 			this.eventsJpa.save(newEvent);
 			handleFileUpload(file);
 		} else {
 			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_NAME_ALREADY_EXIST,
-					"Event name" + newEvent.getEv_Name() + "already exist");
+					"Event name" + newEvent.getEventName() + "already exist");
 		}
 //		return "Add Event with IMG Complete";
 	}
@@ -89,5 +91,18 @@ public class EventsController {
 	public String handleFileUpload(@RequestParam("file") MultipartFile file) {
 		storageService.store(file);
 		return file.getOriginalFilename() + " " + "Upload Complete";
+	}
+
+	@PostMapping("/addEventWithImage")
+	public void createEventWithImage(@RequestParam("event") String newEvent, @RequestParam("file") MultipartFile file){
+		Events event = new Gson().fromJson(newEvent, Events.class);
+		List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventName(event.getEventName());
+		if (checkDuplicateEventName.size() == 0) {
+			this.eventsJpa.save(event);
+			handleFileUpload(file);
+		} else {
+			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_NAME_ALREADY_EXIST,
+					"Event name" + event.getEventName() + "already exist");
+		}
 	}
 }
