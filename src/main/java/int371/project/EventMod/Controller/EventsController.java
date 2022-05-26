@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -44,7 +45,7 @@ public class EventsController {
 		Events event = this.eventsJpa.findById(Ev_ID).orElse(null);
 		if (event == null) {
 			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_ID_DOES_NOT_EXIST,
-					"Event ID : " + Ev_ID + " does not exist ");
+					"Event ID"+" : "+ Ev_ID +" " + "does not exist");
 		}
 		return event;
 	}
@@ -54,21 +55,39 @@ public class EventsController {
 	public Resource serveProduct(@PathVariable String filename) {
 		return storageService.loadAsResource(filename);
 	}
-	
-//  ---------------------------------- PostMapping ----------------------------------
-	// add product with add image
-//	@PostMapping("/addProductWithImage")
-//	public String createProduct(@RequestParam("Events") String newEvent, @RequestParam("file") MultipartFile file) {
-//		Events event = new Gson().fromJson(newEvent, Events.class);
-//		eventsJpa.save(event);
-//		handleFileUpload(file);
-//		return "Complete";
-//	}
 
-	// add a image
+//  ---------------------------------- PostMapping ----------------------------------
+	// Add event
+	@PostMapping("/addEvent")
+	public void createEvent(@RequestBody Events newEvent) {
+		List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventName(newEvent.getEv_Name());
+		if (checkDuplicateEventName.size() == 0) {
+			this.eventsJpa.save(newEvent);
+		} else {
+			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_NAME_ALREADY_EXIST,
+					"Event name" +" : "+ newEvent.getEv_Name()+" "+ "already exist");
+		}
+//		return "Add Event Complete";
+	}
+
+	// Add event with Add image
+	@PostMapping("/addEventWithImg")
+	public void createEventWithImg(@RequestBody Events newEvent, @RequestParam("file") MultipartFile file) {
+		List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventName(newEvent.getEv_Name());
+		if (checkDuplicateEventName.size() == 0) {
+			this.eventsJpa.save(newEvent);
+			handleFileUpload(file);
+		} else {
+			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_NAME_ALREADY_EXIST,
+					"Event name" + newEvent.getEv_Name() + "already exist");
+		}
+//		return "Add Event with IMG Complete";
+	}
+
+	// add a cover image
 	@PostMapping("/uploadImage")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file) {
 		storageService.store(file);
-		return file.getOriginalFilename() + "Upload complete";
+		return file.getOriginalFilename() + " " + "Upload Complete";
 	}
 }

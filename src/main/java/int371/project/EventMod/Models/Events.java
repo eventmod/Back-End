@@ -24,7 +24,7 @@ public class Events {
 	private int Ev_ID;
 
 	@Column(name = "Ev_Name")
-	private String Ev_Name;
+	private String eventName;
 
 	@Column(name = "Ev_Cover")
 	private String Ev_Cover;
@@ -67,7 +67,7 @@ public class Events {
 	}
 
 	public String getEv_Name() {
-		return Ev_Name;
+		return eventName;
 	}
 
 	public String getEv_Cover() {
@@ -121,7 +121,7 @@ public class Events {
 	}
 
 	public void setEv_Name(String ev_Name) {
-		Ev_Name = ev_Name;
+		eventName = ev_Name;
 	}
 
 	public void setEv_Cover(String ev_Cover) {
