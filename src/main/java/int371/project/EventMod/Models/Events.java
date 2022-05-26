@@ -21,37 +21,37 @@ public class Events {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Ev_ID")
-	private int Ev_ID;
+	private int eventID;
 
 	@Column(name = "Ev_Name")
 	private String eventName;
 
 	@Column(name = "Ev_Cover")
-	private String Ev_Cover;
+	private String eventCover;
 
 	@Column(name = "Ev_Description")
-	private String Ev_Description;
+	private String eventDescription;
 
 	@Column(name = "Ev_Location")
-	private String Ev_Location;
+	private String eventLocation;
 
 	@Column(name = "Ev_Gender")
-	private String Ev_Gender;
+	private String eventGender;
 
 	@Column(name = "Ev_NumberOfPeople")
-	private int Ev_NumberOfPeople;
+	private int eventNumberOfPeople;
 
 	@Column(name = "Ev_Year")
-	private String Ev_Year;
+	private String eventYear;
 
 	@Column(name = "Ev_StartRegis")
-	private Timestamp Ev_StartRegis;
+	private Timestamp eventStartRegis;
 
 	@Column(name = "Ev_EndRegis")
-	private Timestamp Ev_EndRegis;
+	private Timestamp eventEndRegis;
 
 	@Column(name = "Ac_ID")
-	private String Ac_ID;
+	private int accountID;
 
 	@OneToOne
 	@JoinColumn(name = "Ac_ID", insertable = false, updatable = false)
@@ -62,48 +62,48 @@ public class Events {
 
 //	Getter
 
-	public int getEv_ID() {
-		return Ev_ID;
+	public int getEventID() {
+		return eventID;
 	}
 
-	public String getEv_Name() {
+	public String getEventName() {
 		return eventName;
 	}
 
-	public String getEv_Cover() {
-		return Ev_Cover;
+	public String getEventCover() {
+		return eventCover;
 	}
 
-	public String getEv_Description() {
-		return Ev_Description;
+	public String getEventDescription() {
+		return eventDescription;
 	}
 
-	public String getEv_Location() {
-		return Ev_Location;
+	public String getEventLocation() {
+		return eventLocation;
 	}
 
-	public String getEv_Gender() {
-		return Ev_Gender;
+	public String getEventGender() {
+		return eventGender;
 	}
 
-	public int getEv_NumberOfPeople() {
-		return Ev_NumberOfPeople;
+	public int getEventNumberOfPeople() {
+		return eventNumberOfPeople;
 	}
 
-	public String getEv_Year() {
-		return Ev_Year;
+	public String getEventYear() {
+		return eventYear;
 	}
 
-	public Timestamp getEv_StartRegis() {
-		return Ev_StartRegis;
+	public Timestamp getEventStartRegis() {
+		return eventStartRegis;
 	}
 
-	public Timestamp getEv_EndRegis() {
-		return Ev_EndRegis;
+	public Timestamp getEventEndRegis() {
+		return eventEndRegis;
 	}
 
-	// public String getAc_ID() {
-	// return Ac_ID;
+	// public String getaccountID() {
+	// return accountID;
 	// }
 
 	public Accounts getAccounts() {
@@ -116,48 +116,48 @@ public class Events {
 		return event_have_tags;
 	}
 
-	public void setEv_ID(int ev_ID) {
-		Ev_ID = ev_ID;
+	public void setEventID(int ev_ID) {
+		eventID = ev_ID;
 	}
 
-	public void setEv_Name(String ev_Name) {
+	public void setEventName(String ev_Name) {
 		eventName = ev_Name;
 	}
 
-	public void setEv_Cover(String ev_Cover) {
-		Ev_Cover = ev_Cover;
+	public void setEventCover(String ev_Cover) {
+		eventCover = ev_Cover;
 	}
 
-	public void setEv_Description(String ev_Description) {
-		Ev_Description = ev_Description;
+	public void setEventDescription(String ev_Description) {
+		eventDescription = ev_Description;
 	}
 
-	public void setEv_Location(String ev_Location) {
-		Ev_Location = ev_Location;
+	public void setEventLocation(String ev_Location) {
+		eventLocation = ev_Location;
 	}
 
-	public void setEv_Gender(String ev_Gender) {
-		Ev_Gender = ev_Gender;
+	public void setEventGender(String ev_Gender) {
+		eventGender = ev_Gender;
 	}
 
-	public void setEv_NumberOfPeople(int ev_NumberOfPeople) {
-		Ev_NumberOfPeople = ev_NumberOfPeople;
+	public void setEventNumberOfPeople(int ev_NumberOfPeople) {
+		eventNumberOfPeople = ev_NumberOfPeople;
 	}
 
-	public void setEv_Year(String ev_Year) {
-		Ev_Year = ev_Year;
+	public void setEventYear(String ev_Year) {
+		eventYear = ev_Year;
 	}
 
-	public void setEv_StartRegis(Timestamp ev_StartRegis) {
-		Ev_StartRegis = ev_StartRegis;
+	public void setEventStartRegis(Timestamp ev_StartRegis) {
+		eventStartRegis = ev_StartRegis;
 	}
 
-	public void setEv_EndRegis(Timestamp ev_EndRegis) {
-		Ev_EndRegis = ev_EndRegis;
+	public void setEventEndRegis(Timestamp ev_EndRegis) {
+		eventEndRegis = ev_EndRegis;
 	}
 
-	public void setAc_ID(String ac_ID) {
-		Ac_ID = ac_ID;
+	public void setAccountID(int ac_ID) {
+		accountID = ac_ID;
 	}
 
 	public void setAccounts(Accounts accounts) {
