@@ -1,8 +1,8 @@
 # build stage
-FROM maven AS build
-COPY src $PWD/src
-COPY pom.xml $PWD
-RUN mvn -f $PWD/pom.xml clean install
+# FROM maven AS build
+# COPY src $PWD/src
+# COPY pom.xml $PWD
+# RUN mvn -f $PWD/pom.xml clean install
   
 # production stage
 FROM openjdk:16-jdk-alpine
