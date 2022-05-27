@@ -3,7 +3,7 @@ FROM maven AS build
 COPY src $PWD/src
 COPY pom.xml $PWD
 # RUN mvn install
-RUN mvn clean install
+RUN mvn -f $PWD/pom.xml clean package
   
 # production stage
 FROM openjdk:16-jdk-alpine
