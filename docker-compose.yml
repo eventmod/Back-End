@@ -14,7 +14,7 @@ services:
             - /home/eventmodadmin/Back-End/public:/tmp
         networks:
             eventmod-network:
-                ipv4_address: 172.20.0.4
+                ipv4_address: 172.20.0.5
         restart: always
 
 networks:
