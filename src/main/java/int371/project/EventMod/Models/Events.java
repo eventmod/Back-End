@@ -14,42 +14,42 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Events")
+@Table(name = "events")
 public class Events {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Ev_ID")
+	@Column(name = "ev_id")
 	private int eventID;
 
-	@Column(name = "Ev_Name")
+	@Column(name = "ev_name")
 	private String eventName;
 
-	@Column(name = "Ev_Cover")
+	@Column(name = "ev_cover")
 	private String eventCover;
 
-	@Column(name = "Ev_Description")
+	@Column(name = "ev_description")
 	private String eventDescription;
 
-	@Column(name = "Ev_Location")
+	@Column(name = "ev_location")
 	private String eventLocation;
 
-	@Column(name = "Ev_Gender")
+	@Column(name = "ev_gender")
 	private String eventGender;
 
-	@Column(name = "Ev_NumberOfPeople")
+	@Column(name = "ev_numberofpeople")
 	private int eventNumberOfPeople;
 
-	@Column(name = "Ev_Year")
+	@Column(name = "ev_year")
 	private String eventYear;
 
-	@Column(name = "Ev_StartRegis")
+	@Column(name = "ev_startregis")
 	private Timestamp eventStartRegis;
 
-	@Column(name = "Ev_EndRegis")
+	@Column(name = "ev_endregis")
 	private Timestamp eventEndRegis;
 
-	@Column(name = "Ac_ID")
+	@Column(name = "ac_id")
 	private int accountID;
 
 	@OneToOne

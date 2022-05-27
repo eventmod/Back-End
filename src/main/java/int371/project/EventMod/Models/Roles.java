@@ -9,34 +9,34 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Roles")
+@Table(name = "roles")
 public class Roles {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "R_ID")
-	private int R_ID;
+	@Column(name = "r_id")
+	private int roleID;
 
-	@Column(name = "R_Name")
-	private String R_Name;
+	@Column(name = "r_name")
+	private String roleName;
 
 //	Getter
 
-	public int getR_ID() {
-		return R_ID;
+	public int getRoleID() {
+		return roleID;
 	}
 
-	public String getR_Name() {
-		return R_Name;
+	public String getRoleName() {
+		return roleName;
 	}
 
 //	Setter
 
-	public void setR_ID(int r_ID) {
-		R_ID = r_ID;
+	public void setRoleID(int r_ID) {
+		roleID = r_ID;
 	}
 
-	public void setR_Name(String r_Name) {
-		R_Name = r_Name;
+	public void setRoleName(String r_Name) {
+		roleName = r_Name;
 	}
 }

@@ -10,32 +10,32 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "EventsHaveTags")
+@Table(name = "eventshavetags")
 public class EventsHaveTags {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "EventTag_ID")
-	private int EventTag_ID;
+	@Column(name = "eventtag_id")
+	private int eventTagID;
 
-	@Column(name = "Ev_ID")
-	private int Ev_ID;
+	@Column(name = "ev_id")
+	private int eventID;
 
-	@Column(name = "Tag_ID")
-	private int Tag_ID;
+	@Column(name = "tag_id")
+	private int tagID;
 
 	@ManyToOne
-	@JoinColumn(name = "Ev_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "eventID", insertable = false, updatable = false)
 	Events events;
 
 	@ManyToOne
-	@JoinColumn(name = "Tag_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "tagID", insertable = false, updatable = false)
 	Tags tags;
 
 //	Getter
 
-	public int getEventTag_ID() {
-		return EventTag_ID;
+	public int getEventTagID() {
+		return eventTagID;
 	}
 
 	// public int getEv_ID() {
@@ -56,16 +56,16 @@ public class EventsHaveTags {
 
 //	Setter
 
-	public void setEventTag_ID(int eventTag_ID) {
-		EventTag_ID = eventTag_ID;
+	public void setEventTagID(int eventTag_ID) {
+		eventTagID = eventTag_ID;
 	}
 
-	public void setEv_ID(int ev_ID) {
-		Ev_ID = ev_ID;
+	public void setEventID(int ev_ID) {
+		eventID = ev_ID;
 	}
 
-	public void setTag_ID(int tag_ID) {
-		Tag_ID = tag_ID;
+	public void setTagID(int tag_ID) {
+		tagID = tag_ID;
 	}
 
 //	public void setEvents(Events events) {

@@ -10,79 +10,80 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Contacts")
+@Table(name = "contacts")
 public class Contacts {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "C_ID")
-	private int C_ID;
+	@Column(name = "c_id")
+	private int contactID;
 
-	@Column(name = "C_Name")
-	private String C_Name;
+	@Column(name = "c_name")
+	private String contactName;
 
-	@Column(name = "C_Phone")
-	private String C_Phone;
+	@Column(name = "c_phone")
+	private String contactPhone;
 
-	@Column(name = "C_Email")
-	private String C_Email;
+	@Column(name = "c_email")
+	private String contactEmail;
 
-	@Column(name = "Ev_ID")
-	private String Ev_ID;
+	@Column(name = "ev_id")
+	private String eventID;
 
 	@OneToOne
-	@JoinColumn(name = "Ev_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "eventID", insertable = false, updatable = false)
 	Events events;
 
-//	Getter
+	// Getter
 
-	public int getC_ID() {
-		return C_ID;
+	public int getContactID() {
+		return contactID;
 	}
 
-	public String getC_Name() {
-		return C_Name;
+	public String getContactName() {
+		return contactName;
 	}
 
-	public String getC_Phone() {
-		return C_Phone;
+	public String getContactPhone() {
+		return contactPhone;
 	}
 
-	public String getC_Email() {
-		return C_Email;
+	public String getContactEmail() {
+		return contactEmail;
 	}
 
-	public String getEv_ID() {
-		return Ev_ID;
+	public String getEventID() {
+		return eventID;
 	}
 
 	public Events getEvents() {
 		return events;
 	}
 
-//	Setter
+	// Setter
 
-	public void setC_ID(int c_ID) {
-		C_ID = c_ID;
+	public void setContactID(int contactID) {
+		this.contactID = contactID;
 	}
 
-	public void setC_Name(String c_Name) {
-		C_Name = c_Name;
+	public void setContactName(String contactName) {
+		this.contactName = contactName;
 	}
 
-	public void setC_Phone(String c_Phone) {
-		C_Phone = c_Phone;
+	public void setContactPhone(String contactPhone) {
+		this.contactPhone = contactPhone;
 	}
 
-	public void setC_Email(String c_Email) {
-		C_Email = c_Email;
+	public void setContactEmail(String contactEmail) {
+		this.contactEmail = contactEmail;
 	}
 
-	public void setEv_ID(String ev_ID) {
-		Ev_ID = ev_ID;
+	public void setEventID(String eventID) {
+		this.eventID = eventID;
 	}
 
 	public void setEvents(Events events) {
 		this.events = events;
 	}
+
 }

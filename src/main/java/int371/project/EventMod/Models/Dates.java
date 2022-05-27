@@ -12,68 +12,69 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Dates")
+@Table(name = "dates")
 public class Dates {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "D_ID")
-	private int D_ID;
+	@Column(name = "d_id")
+	private int dateID;
 
-	@Column(name = "D_StartDate")
-	private java.sql.Date D_StartDate;
+	@Column(name = "d_startdate")
+	private java.sql.Date dateStartDate;
 
-	@Column(name = "D_EndDate")
-	private java.sql.Date D_EndDate;
+	@Column(name = "d_enddate")
+	private java.sql.Date dateEndDate;
 
-	@Column(name = "Ev_ID")
-	private int Ev_ID;
+	@Column(name = "ev_id")
+	private int eventID;
 
 	@OneToOne
-	@JoinColumn(name = "Ev_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "eventID", insertable = false, updatable = false)
 	Events events;
 
-//	Getter
+	// Getter
 
-	public int getD_ID() {
-		return D_ID;
+	public int getDateID() {
+		return dateID;
 	}
 
-	public java.sql.Date getD_StartDate() {
-		return D_StartDate;
+	public java.sql.Date getDateStartDate() {
+		return dateStartDate;
 	}
 
-	public java.sql.Date getD_EndDate() {
-		return D_EndDate;
+	public java.sql.Date getDateEndDate() {
+		return dateEndDate;
 	}
 
-	public int getEv_ID() {
-		return Ev_ID;
+	public int getEventID() {
+		return eventID;
 	}
 
 	public Events getEvents() {
 		return events;
 	}
 
-//	Setter
-
-	public void setD_ID(int d_ID) {
-		D_ID = d_ID;
+	// Setter
+	
+	public void setDateID(int dateID) {
+		this.dateID = dateID;
 	}
 
-	public void setD_StartDate(java.sql.Date d_StartDate) {
-		D_StartDate = d_StartDate;
+	public void setDateStartDate(java.sql.Date dateStartDate) {
+		this.dateStartDate = dateStartDate;
 	}
 
-	public void setD_EndDate(java.sql.Date d_EndDate) {
-		D_EndDate = d_EndDate;
+	public void setDateEndDate(java.sql.Date dateEndDate) {
+		this.dateEndDate = dateEndDate;
 	}
 
-	public void setEv_ID(int ev_ID) {
-		Ev_ID = ev_ID;
+	public void setEventID(int eventID) {
+		this.eventID = eventID;
 	}
 
 	public void setEvents(Events events) {
 		this.events = events;
 	}
+
 }

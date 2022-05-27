@@ -12,28 +12,28 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Tags")
+@Table(name = "tags")
 public class Tags {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Tag_ID")
-	private int Tag_ID;
+	@Column(name = "tag_id")
+	private int tagID;
 
-	@Column(name = "Tag_Name")
-	private String Tag_Name;
+	@Column(name = "tag_name")
+	private String tagName;
 
 	@OneToMany(mappedBy = "tags", cascade = CascadeType.ALL, orphanRemoval = true)
 	Set<EventsHaveTags> event_have_tags;
 
 //	Getter
 
-	public int getTag_ID() {
-		return Tag_ID;
+	public int getTagID() {
+		return tagID;
 	}
 
-	public String getTag_Name() {
-		return Tag_Name;
+	public String getTagName() {
+		return tagName;
 	}
 
 	// public Set<EventsHaveTags> getEvent_have_tags() {
@@ -42,15 +42,15 @@ public class Tags {
 
 //	Setter
 
-	public void setTag_ID(int tag_ID) {
-		Tag_ID = tag_ID;
+	public void setTagID(int tag_ID) {
+		tagID = tag_ID;
 	}
 
-	public void setTag_Name(String tag_Name) {
-		Tag_Name = tag_Name;
+	public void setTagName(String tag_Name) {
+		tagName = tag_Name;
 	}
 
-	public void setEvent_have_tags(Set<EventsHaveTags> event_have_tags) {
+	public void setEventHaveTags(Set<EventsHaveTags> event_have_tags) {
 		this.event_have_tags = event_have_tags;
 	}
 }

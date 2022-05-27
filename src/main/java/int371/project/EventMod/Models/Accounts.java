@@ -10,76 +10,76 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Accounts")
+@Table(name = "accounts")
 public class Accounts {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Ac_ID")
-	private int Ac_ID;
+	@Column(name = "ac_id")
+	private int accountID;
 
-	@Column(name = "Ac_Name")
-	private String Ac_Name;
+	@Column(name = "ac_name")
+	private String accountName;
 
-	@Column(name = "Ac_Description")
-	private String Ac_Description;
+	@Column(name = "ac_description")
+	private String accountDescription;
 
-	@Column(name = "Ac_Faculty")
-	private String Ac_Faculty;
+	@Column(name = "ac_faculty")
+	private String accountFaculty;
 
-	@Column(name = "R_ID")
-	private String R_ID;
+	@Column(name = "r_id")
+	private String roleID;
 
 	@OneToOne
 	@JoinColumn(name = "R_ID", insertable = false, updatable = false)
 	Roles roles;
 
-//	Getter
+	// Getter
 
-	public int getAc_ID() {
-		return Ac_ID;
+	public int getAccountID() {
+		return accountID;
 	}
 
-	public String getAc_Name() {
-		return Ac_Name;
+	public String getAccountName() {
+		return accountName;
 	}
 
-	public String getAc_Description() {
-		return Ac_Description;
+	public String getAccountDescription() {
+		return accountDescription;
 	}
 
-	public String getAc_Faculty() {
-		return Ac_Faculty;
+	public String getAccountFaculty() {
+		return accountFaculty;
 	}
 
-	// public String getR_ID() {
-	// 	return R_ID;
+	// public String getRoleID() {
+	// return roleID;
 	// }
 
 	public Roles getRoles() {
 		return roles;
 	}
 
-//	Setter
+	// Setter
 
-	public void setAc_ID(int ac_ID) {
-		Ac_ID = ac_ID;
+	public void setAccountID(int accountID) {
+		this.accountID = accountID;
 	}
 
-	public void setAc_Name(String ac_Name) {
-		Ac_Name = ac_Name;
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
 	}
 
-	public void setAc_Description(String ac_Description) {
-		Ac_Description = ac_Description;
+	public void setAccountDescription(String accountDescription) {
+		this.accountDescription = accountDescription;
 	}
 
-	public void setAc_Faculty(String ac_Faculty) {
-		Ac_Faculty = ac_Faculty;
+	public void setAccountFaculty(String accountFaculty) {
+		this.accountFaculty = accountFaculty;
 	}
 
-	public void setR_ID(String r_ID) {
-		R_ID = r_ID;
+	public void setRoleID(String roleID) {
+		this.roleID = roleID;
 	}
 
 	public void setRoles(Roles roles) {
