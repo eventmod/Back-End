@@ -3,9 +3,6 @@ package int371.project.EventMod.Repositories;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.data.repository.query.Param;
 
 import int371.project.EventMod.Models.Events;
 

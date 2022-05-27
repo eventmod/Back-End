@@ -1,7 +1,6 @@
 package int371.project.EventMod.Models;
 
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
