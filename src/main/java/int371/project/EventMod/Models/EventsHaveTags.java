@@ -25,11 +25,11 @@ public class EventsHaveTags {
 	private int tagID;
 
 	@ManyToOne
-	@JoinColumn(name = "eventID", insertable = false, updatable = false)
+	@JoinColumn(name = "ev_id", insertable = false, updatable = false)
 	Events events;
 
 	@ManyToOne
-	@JoinColumn(name = "tagID", insertable = false, updatable = false)
+	@JoinColumn(name = "tag_id", insertable = false, updatable = false)
 	Tags tags;
 
 //	Getter
