@@ -16,6 +16,8 @@
 	<description>Senior Project for INT371 EXPERIENTIAL LEARNING PROJECT I</description>
 	<properties>
 		<java.version>11</java.version>
+		<repackage.classifier />
+		<spring-native.version>0.10.2</spring-native.version>
 	</properties>
 	<dependencies>
 		<dependency>

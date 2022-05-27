@@ -1,7 +1,7 @@
 version: '3'
 services:
     backend:
-        image: ghcr.io/chicky0/eventmod-backend:latest
+        image: backend:latest
         container_name: backend
         build: .
         ports:
