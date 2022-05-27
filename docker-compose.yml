@@ -8,9 +8,16 @@ services:
             - /home/eventmod/Back-End/public:/tmp
         ports:
             - "3000:3000"
+        environment:
+            - MYSQL_DATABASE=eventmod
+            - MYSQL_USER=Eventmod
+            - MYSQL_ROOT_PASSWORD=eventadmin
+         volumes:
+            - /home/eventmodadmin/Back-End/public:/tmp
         restart: always
+        network:
+            - eventmod-network
 
 networks:
-    default :
-        eventmod-network:
-            external: true
+    eventmod-network:
+        external: true
