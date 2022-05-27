@@ -12,7 +12,7 @@ services:
             - MYSQL_DATABASE=eventmod
             - MYSQL_USER=Eventmod
             - MYSQL_ROOT_PASSWORD=eventadmin
-         volumes:
+        volumes:
             - /home/eventmodadmin/Back-End/public:/tmp
         restart: always
         network:
