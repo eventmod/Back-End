@@ -15,7 +15,7 @@ services:
         volumes:
             - /home/eventmodadmin/Back-End/public:/tmp
         restart: always
-        network:
+        networks:
             - eventmod-network
 
 networks:
