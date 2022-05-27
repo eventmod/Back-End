@@ -1,7 +1,7 @@
 version: '3'
 services:
     backend:
-        image: ghcr.io/chicky0/eventmod-backend:latest
+        image: backend:latest
         container_name: backend
         build: .
         ports:
@@ -12,14 +12,9 @@ services:
             - MYSQL_ROOT_PASSWORD=eventadmin
         volumes:
             - /home/eventmodadmin/Back-End/public:/tmp
-        networks:
-            eventmod-network:
-                ipv4_address: 172.20.0.5
         restart: always
 
 networks:
     default:
         external:
             name: eventmod-network
-    eventmod-network:
-        external: true
