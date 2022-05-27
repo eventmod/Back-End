@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3'
 services:
     backend:
         image: ghcr.io/chicky0/eventmod-backend:latest
@@ -17,5 +17,8 @@ services:
         restart: always
 
 networks:
+    default:
+        external:
+            name: eventmod-network
     eventmod-network:
         external: true
