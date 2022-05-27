@@ -8,10 +8,7 @@ public class ExceptionResponse {
 		EVENTS_ID_DOES_NOT_EXIST(1000), EVENTS_NAME_ALREADY_EXIST(1001),
 		EVENTS_NAME_DOES_NOT_EXIST(1003);
 
-		private int errorValue;
-
 		ERROR_CODE(int errorValue) {
-			this.errorValue = errorValue;
 		}
 	}
 
