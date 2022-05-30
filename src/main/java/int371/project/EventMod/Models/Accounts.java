@@ -52,10 +52,6 @@ public class Accounts {
 		return accountFaculty;
 	}
 
-	// public String getRoleID() {
-	// return roleID;
-	// }
-
 	public Roles getRoles() {
 		return roles;
 	}

@@ -101,10 +101,6 @@ public class Events {
 		return eventEndRegis;
 	}
 
-	// public String getaccountID() {
-	// return accountID;
-	// }
-
 	public Accounts getAccounts() {
 		return accounts;
 	}

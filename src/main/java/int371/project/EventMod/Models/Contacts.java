@@ -85,5 +85,4 @@ public class Contacts {
 	public void setEvents(Events events) {
 		this.events = events;
 	}
-
 }

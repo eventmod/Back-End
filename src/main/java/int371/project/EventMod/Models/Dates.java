@@ -56,7 +56,7 @@ public class Dates {
 	}
 
 	// Setter
-	
+
 	public void setDateID(int dateID) {
 		this.dateID = dateID;
 	}
@@ -76,5 +76,4 @@ public class Dates {
 	public void setEvents(Events events) {
 		this.events = events;
 	}
-
 }
