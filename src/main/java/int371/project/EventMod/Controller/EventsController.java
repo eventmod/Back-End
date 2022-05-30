@@ -34,67 +34,42 @@ public class EventsController {
 		this.storageService = storageService;
 	}
 
-////---------------------------------- GetMapping ----------------------------------
+////-------------------------------------------------------- GetMapping -------------------------------------------------------------------------
 	// Show a list of all events.
 	@GetMapping("/events")
 	public List<Events> showAllEvents() {
 		return eventsJpa.findAll();
 	}
 
-	// Show list of events by Ev_ID (Test Postman)
+	// Show list of events by EventID
 	@GetMapping("/events/{Ev_ID}")
 	public Events showEventByID(@PathVariable int Ev_ID) {
 		Events event = this.eventsJpa.findById(Ev_ID).orElse(null);
 		if (event == null) {
 			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_ID_DOES_NOT_EXIST,
-					"Event ID"+" : "+ Ev_ID +" " + "does not exist");
+					"Event ID" + " : " + Ev_ID + " " + "does not exist");
 		}
 		return event;
 	}
 
-	// browse images files
+	// Browse Images Files
 	@GetMapping(value = "/Files/{filename:.+}", produces = MediaType.IMAGE_JPEG_VALUE)
 	public Resource serveProduct(@PathVariable String filename) {
 		return storageService.loadAsResource(filename);
 	}
 
-//  ---------------------------------- PostMapping ----------------------------------
-	// Add event
-	@PostMapping("/addEvent")
-	public void createEvent(@RequestBody Events newEvent) {
-		List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventName(newEvent.getEventName());
-		if (checkDuplicateEventName.size() == 0) {
-			this.eventsJpa.save(newEvent);
-		} else {
-			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_NAME_ALREADY_EXIST,
-					"Event name" +" : "+ newEvent.getEventName()+" "+ "already exist");
-		}
-//		return "Add Event Complete";
-	}
+//  ----------------------------------------------------------- PostMapping --------------------------------------------------------------------
 
-	// Add event with Add image
-	@PostMapping("/addEventWithImg")
-	public void createEventWithImg(@RequestBody Events newEvent, @RequestParam("file") MultipartFile file) {
-		List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventName(newEvent.getEventName());
-		if (checkDuplicateEventName.size() == 0) {
-			this.eventsJpa.save(newEvent);
-			handleFileUpload(file);
-		} else {
-			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_NAME_ALREADY_EXIST,
-					"Event name" + newEvent.getEventName() + "already exist");
-		}
-//		return "Add Event with IMG Complete";
-	}
-
-	// add a cover image
+	// Add Cover Image
 	@PostMapping("/uploadImage")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file) {
 		storageService.store(file);
 		return file.getOriginalFilename() + " " + "Upload Complete";
 	}
 
+	// Add Event with Img
 	@PostMapping("/addEventWithImage")
-	public void createEventWithImage(@RequestParam("event") String newEvent, @RequestParam("file") MultipartFile file){
+	public void createEventWithImage(@RequestParam("event") String newEvent, @RequestParam("file") MultipartFile file) {
 		Events event = new Gson().fromJson(newEvent, Events.class);
 		List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventName(event.getEventName());
 		if (checkDuplicateEventName.size() == 0) {
