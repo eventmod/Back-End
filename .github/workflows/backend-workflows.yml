@@ -2,7 +2,7 @@ name: deploy-backend-eventmod
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -35,6 +35,8 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd Back-End/
-            git pull origin master
+            git pull origin main
+            sudo docker rm -f backend
+            sudo docker rmi ghcr.io/chicky0/eventmod-backend
             sudo docker pull ghcr.io/chicky0/eventmod-backend:latest
-            sudo docker-compose up -d
+            sudo docker-compose up -d 
