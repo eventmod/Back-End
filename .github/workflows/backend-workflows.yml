@@ -50,5 +50,4 @@ jobs:
         with:
           access_token: ${{ secrets.LINE_ACCESS_TOKEN }}
           message: |
-            Issue is opened.
-            ${{ github.event.issue.title }}
+            Deploy Backend Success.
