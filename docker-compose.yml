@@ -11,6 +11,7 @@ services:
             - MYSQL_ROOT_PASSWORD=eventadmin
             - MYSQL_USER=Eventmod
             - MYSQL_PASSWORD=eventadmin
+            SPRING_DATASOURCE_URL: jdbc:mysql://eventmoddb:3306/eventmod?autoReconnect=true&useSSL=false
         volumes:
             - /home/eventmodadmin/Back-End/public:/tmp
         restart: always
