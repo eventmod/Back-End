@@ -27,12 +27,13 @@ public class Accounts {
 	@Column(name = "ac_faculty")
 	private String accountFaculty;
 
-	@Column(name = "r_id")
-	private String roleID;
+	@OneToOne
+	@JoinColumn(name = "creator_id", insertable = false, updatable = false)
+	Creators creators;
 
 	@OneToOne
-	@JoinColumn(name = "R_ID", insertable = false, updatable = false)
-	Roles roles;
+	@JoinColumn(name = "admin_id", insertable = false, updatable = false)
+	Admins admins;
 
 	// Getter
 
@@ -52,10 +53,6 @@ public class Accounts {
 		return accountFaculty;
 	}
 
-	public Roles getRoles() {
-		return roles;
-	}
-
 	// Setter
 
 	public void setAccountID(int accountID) {
@@ -72,13 +69,5 @@ public class Accounts {
 
 	public void setAccountFaculty(String accountFaculty) {
 		this.accountFaculty = accountFaculty;
-	}
-
-	public void setRoleID(String roleID) {
-		this.roleID = roleID;
-	}
-
-	public void setRoles(Roles roles) {
-		this.roles = roles;
 	}
 }

@@ -14,5 +14,5 @@ public interface EventsJpaRepository extends JpaRepository<Events, Integer> {
 //	List<Events> findAll();
 //
 //	@Query("select * from Events where Ev_Name = :eventName")
-	List<Events> findAllByEventName(String EvName);
+	List<Events> findAllByEventTitle(String eventTitle);
 }
