@@ -40,13 +40,13 @@ public class EventsController {
 		return eventsJpa.findAll();
 	}
 
-	// Show list of events by EventID
-	@GetMapping("/events/{Ev_ID}")
-	public Events showEventByID(@PathVariable int Ev_ID) {
-		Events event = this.eventsJpa.findById(Ev_ID).orElse(null);
+	// Show list of events by eventID
+	@GetMapping("/events/{eventID}")
+	public Events showEventByID(@PathVariable int eventID) {
+		Events event = this.eventsJpa.findById(eventID).orElse(null);
 		if (event == null) {
 			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_ID_DOES_NOT_EXIST,
-					"Event ID" + " : " + Ev_ID + " " + "does not exist");
+					"Event ID" + " : " + eventID + " " + "does not exist");
 		}
 		return event;
 	}
@@ -70,13 +70,13 @@ public class EventsController {
 	@PostMapping("/addEventWithImage")
 	public void createEventWithImage(@RequestParam("event") String newEvent, @RequestParam("file") MultipartFile file) {
 		Events event = new Gson().fromJson(newEvent, Events.class);
-		List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventName(event.getEventName());
+		List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventTitle(event.getEventTitle());
 		if (checkDuplicateEventName.size() == 0) {
 			this.eventsJpa.save(event);
 			handleFileUpload(file);
 		} else {
 			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_NAME_ALREADY_EXIST,
-					"Event name" + event.getEventName() + "already exist");
+					"Event name" + event.getEventTitle() + "already exist");
 		}
 	}
 }

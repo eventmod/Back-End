@@ -18,14 +18,14 @@ public class EventsHaveTags {
 	@Column(name = "eventtag_id")
 	private int eventTagID;
 
-	@Column(name = "ev_id")
+	@Column(name = "event_id")
 	private int eventID;
 
 	@Column(name = "tag_id")
 	private int tagID;
 
 	@ManyToOne
-	@JoinColumn(name = "ev_id", insertable = false, updatable = false)
+	@JoinColumn(name = "event_id", insertable = false, updatable = false)
 	Events events;
 
 	@ManyToOne
@@ -39,11 +39,11 @@ public class EventsHaveTags {
 	}
 
 	// public int getEv_ID() {
-	// 	return Ev_ID;
+	// return Ev_ID;
 	// }
 
 	// public int getTag_ID() {
-	// 	return Tag_ID;
+	// return Tag_ID;
 	// }
 
 //	public Events getEvents() {

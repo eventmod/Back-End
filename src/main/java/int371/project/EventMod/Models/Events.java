@@ -19,41 +19,50 @@ public class Events {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ev_id")
+	@Column(name = "event_id")
 	private int eventID;
 
-	@Column(name = "ev_name")
-	private String eventName;
+	@Column(name = "event_title")
+	private String eventTitle;
 
-	@Column(name = "ev_cover")
+	@Column(name = "event_cover")
 	private String eventCover;
 
-	@Column(name = "ev_description")
-	private String eventDescription;
+	@Column(name = "event_shortdescription")
+	private String eventShortDescription;
 
-	@Column(name = "ev_location")
+	@Column(name = "event_location")
 	private String eventLocation;
 
-	@Column(name = "ev_gender")
-	private String eventGender;
+	@Column(name = "event_datetime")
+	private String eventDateTime;
 
-	@Column(name = "ev_numberofpeople")
+	@Column(name = "event_numberofpeople")
 	private int eventNumberOfPeople;
 
-	@Column(name = "ev_year")
-	private String eventYear;
+	@Column(name = "event_datetimeregistration")
+	private String eventStartRegis;
 
-	@Column(name = "ev_startregis")
-	private Timestamp eventStartRegis;
+	@Column(name = "event_endregistration")
+	private String eventEndRegis;
 
-	@Column(name = "ev_endregis")
-	private Timestamp eventEndRegis;
+	@Column(name = "event_cost")
+	private int eventCost;
+
+	@Column(name = "event_collegeyear")
+	private int eventYear;
+
+	@Column(name = "event_type")
+	private String eventType;
+
+	@Column(name = "event_longdescription")
+	private String eventLongDescription;
 
 	@Column(name = "ac_id")
 	private int accountID;
 
 	@OneToOne
-	@JoinColumn(name = "Ac_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "ac_id", insertable = false, updatable = false)
 	Accounts accounts;
 
 	@OneToMany(mappedBy = "events", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -65,40 +74,56 @@ public class Events {
 		return eventID;
 	}
 
-	public String getEventName() {
-		return eventName;
+	public String getEventTitle() {
+		return eventTitle;
 	}
 
 	public String getEventCover() {
 		return eventCover;
 	}
 
-	public String getEventDescription() {
-		return eventDescription;
+	public String getEventShortDescription() {
+		return eventShortDescription;
 	}
 
 	public String getEventLocation() {
 		return eventLocation;
 	}
 
-	public String getEventGender() {
-		return eventGender;
+	public String getEventDateTime() {
+		return eventDateTime;
 	}
 
 	public int getEventNumberOfPeople() {
 		return eventNumberOfPeople;
 	}
 
-	public String getEventYear() {
-		return eventYear;
-	}
-
-	public Timestamp getEventStartRegis() {
+	public String getEventStartRegis() {
 		return eventStartRegis;
 	}
 
-	public Timestamp getEventEndRegis() {
+	public int getEventCost() {
+		return eventCost;
+	}
+
+	public int getEventYear() {
+		return eventYear;
+	}
+
+	public String getEventEndRegis() {
 		return eventEndRegis;
+	}
+
+	public String getEventType() {
+		return eventType;
+	}
+
+	public String getEventLongDescription() {
+		return eventLongDescription;
+	}
+
+	public int getAccountID() {
+		return accountID;
 	}
 
 	public Accounts getAccounts() {
@@ -111,55 +136,67 @@ public class Events {
 		return eventHaveTags;
 	}
 
-	public void setEventID(int ev_ID) {
-		eventID = ev_ID;
+	public void setEventID(int eventID) {
+		this.eventID = eventID;
 	}
 
-	public void setEventName(String ev_Name) {
-		eventName = ev_Name;
+	public void setEventTitle(String eventTitle) {
+		this.eventTitle = eventTitle;
 	}
 
-	public void setEventCover(String ev_Cover) {
-		eventCover = ev_Cover;
+	public void setEventCover(String eventCover) {
+		this.eventCover = eventCover;
 	}
 
-	public void setEventDescription(String ev_Description) {
-		eventDescription = ev_Description;
+	public void setEventShortDescription(String eventShortDescription) {
+		this.eventShortDescription = eventShortDescription;
 	}
 
-	public void setEventLocation(String ev_Location) {
-		eventLocation = ev_Location;
+	public void setEventLocation(String eventLocation) {
+		this.eventLocation = eventLocation;
 	}
 
-	public void setEventGender(String ev_Gender) {
-		eventGender = ev_Gender;
+	public void setEventDateTime(String eventDateTime) {
+		this.eventDateTime = eventDateTime;
 	}
 
-	public void setEventNumberOfPeople(int ev_NumberOfPeople) {
-		eventNumberOfPeople = ev_NumberOfPeople;
+	public void setEventNumberOfPeople(int eventNumberOfPeople) {
+		this.eventNumberOfPeople = eventNumberOfPeople;
 	}
 
-	public void setEventYear(String ev_Year) {
-		eventYear = ev_Year;
+	public void setEventStartRegis(String eventStartRegis) {
+		this.eventStartRegis = eventStartRegis;
 	}
 
-	public void setEventStartRegis(Timestamp ev_StartRegis) {
-		eventStartRegis = ev_StartRegis;
+	public void setEventCost(int eventCost) {
+		this.eventCost = eventCost;
 	}
 
-	public void setEventEndRegis(Timestamp ev_EndRegis) {
-		eventEndRegis = ev_EndRegis;
+	public void setEventYear(int eventYear) {
+		this.eventYear = eventYear;
 	}
 
-	public void setAccountID(int ac_ID) {
-		accountID = ac_ID;
+	public void setEventEndRegis(String eventEndRegis) {
+		this.eventEndRegis = eventEndRegis;
+	}
+
+	public void setEventType(String eventType) {
+		this.eventType = eventType;
+	}
+
+	public void setEventLongDescription(String eventLongDescription) {
+		this.eventLongDescription = eventLongDescription;
+	}
+
+	public void setAccountID(int accountID) {
+		this.accountID = accountID;
 	}
 
 	public void setAccounts(Accounts accounts) {
 		this.accounts = accounts;
 	}
 
-	public void setEventHaveTags(Set<EventsHaveTags> eventhavetags) {
-		this.eventHaveTags = eventhavetags;
+	public void setEventHaveTags(Set<EventsHaveTags> eventHaveTags) {
+		this.eventHaveTags = eventHaveTags;
 	}
 }

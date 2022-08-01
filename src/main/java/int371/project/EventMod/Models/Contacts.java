@@ -27,8 +27,8 @@ public class Contacts {
 	@Column(name = "c_email")
 	private String contactEmail;
 
-	@Column(name = "ev_id")
-	private String eventID;
+	@Column(name = "event_id")
+	private int eventID;
 
 	@OneToOne
 	@JoinColumn(name = "eventID", insertable = false, updatable = false)
@@ -52,7 +52,7 @@ public class Contacts {
 		return contactEmail;
 	}
 
-	public String getEventID() {
+	public int getEventID() {
 		return eventID;
 	}
 
@@ -78,7 +78,7 @@ public class Contacts {
 		this.contactEmail = contactEmail;
 	}
 
-	public void setEventID(String eventID) {
+	public void setEventID(int eventID) {
 		this.eventID = eventID;
 	}
 
