@@ -244,22 +244,22 @@ public class Events {
 		this.eventHaveTag = eventHaveTag;
 	}
 
-	public void setAll(Events editDataProduct) {
-		this.setEventTitle(editDataProduct.eventTitle);
-		this.setEventCover(editDataProduct.eventCover);
-		this.setEventShortDescription(editDataProduct.eventShortDescription);
-		this.setEventLongDescription(editDataProduct.eventLongDescription);
-		this.setEventLocation(editDataProduct.eventLocation);
-		this.setEventNumberOfPeople(editDataProduct.eventNumberOfPeople);
-		this.setEventStartDate(editDataProduct.eventStartDate);
-		this.setEventEndDate(editDataProduct.eventEndDate);
-		this.setEventStartTime(editDataProduct.eventStartTime);
-		this.setEventEndDate(editDataProduct.eventEndDate);
-		this.setEventStartRegis(editDataProduct.eventStartRegis);
-		this.setEventEndRegis(editDataProduct.eventEndRegis);
-		this.setEventCost(editDataProduct.eventCost);
-		this.setEventYear(editDataProduct.eventYear);
-		this.setEventType(editDataProduct.eventType);
-		this.setEventNote(editDataProduct.eventNote);
+	public void setAll(Events editDataEvent) {
+		this.setEventTitle(editDataEvent.eventTitle);
+		this.setEventCover(editDataEvent.eventCover);
+		this.setEventShortDescription(editDataEvent.eventShortDescription);
+		this.setEventLongDescription(editDataEvent.eventLongDescription);
+		this.setEventLocation(editDataEvent.eventLocation);
+		this.setEventNumberOfPeople(editDataEvent.eventNumberOfPeople);
+		this.setEventStartDate(editDataEvent.eventStartDate);
+		this.setEventEndDate(editDataEvent.eventEndDate);
+		this.setEventStartTime(editDataEvent.eventStartTime);
+		this.setEventEndDate(editDataEvent.eventEndDate);
+		this.setEventStartRegis(editDataEvent.eventStartRegis);
+		this.setEventEndRegis(editDataEvent.eventEndRegis);
+		this.setEventCost(editDataEvent.eventCost);
+		this.setEventYear(editDataEvent.eventYear);
+		this.setEventType(editDataEvent.eventType);
+		this.setEventNote(editDataEvent.eventNote);
 	}
 }

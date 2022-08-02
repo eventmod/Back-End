@@ -89,17 +89,15 @@ public class EventsController {
 //  ---------------------------------------------------------DeleteMapping--------------------------------------------------------------------
 	// Delete event by eventID
 	@DeleteMapping("/events/{eventID}")
-	public Events deleteEvent(@PathVariable int eventID) throws IOException {
+	public String deleteEvent(@PathVariable int eventID) throws IOException {
 		Events event = eventsJpa.findById(eventID).orElse(null);
 		if (event == null) {
 			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_ID_DOES_NOT_EXIST,
-					"Event ID" + " : " + eventID + " " + "cannot be deleted.");
-		} else {
-			System.err.println("Delete Event ID : " + eventID + " complete.");
+					"Event ID" + " : " + eventID + " " + "cannot be deleted because the Event ID cannot be found.");
 		}
 		storageService.delete(event.getEventCover());
 		eventsJpa.deleteById(eventID);
-		return event;
+		return "Delete Event ID : " + eventID + " Success.";
 	}
 
 //  -----------------------------------------------------------PutMapping-----------------------------------------------------------------------
@@ -109,11 +107,15 @@ public class EventsController {
 			@RequestParam("file") MultipartFile file) throws Exception {
 		Events editDataEvent = new Gson().fromJson(updateEvent, Events.class);
 		Events event = eventsJpa.findById(eventID).orElse(null);
+		if (event == null) {
+			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_ID_DOES_NOT_EXIST,
+					"Event ID" + " : " + eventID + " " + "cannot be updated.");
+		}
 		storageService.delete(event.getEventCover());
 		event.setAll(editDataEvent);
 		eventsJpa.save(event);
 		storageService.store(file);
-		return "Update Data Event Success";
+		return "Update Data Event ID : " + eventID + " Success";
 	}
 
 //  ---------------------------------- ExceptionHandler ----------------------------------
