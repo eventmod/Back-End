@@ -66,7 +66,7 @@ public class Events {
 	Accounts accounts;
 
 	@OneToMany(mappedBy = "events", cascade = CascadeType.ALL, orphanRemoval = true)
-	Set<EventsHaveTags> eventHaveTags;
+	Set<EventHaveTag> eventHaveTag;
 
 //	Getter
 
@@ -132,8 +132,8 @@ public class Events {
 
 //	Setter
 
-	public Set<EventsHaveTags> getEventHaveTags() {
-		return eventHaveTags;
+	public Set<EventHaveTag> getEventHaveTags() {
+		return eventHaveTag;
 	}
 
 	public void setEventID(int eventID) {
@@ -196,7 +196,7 @@ public class Events {
 		this.accounts = accounts;
 	}
 
-	public void setEventHaveTags(Set<EventsHaveTags> eventHaveTags) {
-		this.eventHaveTags = eventHaveTags;
+	public void setEventHaveTags(Set<EventHaveTag> eventHaveTag) {
+		this.eventHaveTag = eventHaveTag;
 	}
 }
