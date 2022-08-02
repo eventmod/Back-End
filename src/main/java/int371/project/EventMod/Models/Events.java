@@ -243,4 +243,23 @@ public class Events {
 	public void setEventHaveTag(Set<EventHaveTag> eventHaveTag) {
 		this.eventHaveTag = eventHaveTag;
 	}
+
+	public void setAll(Events editDataProduct) {
+		this.setEventTitle(editDataProduct.eventTitle);
+		this.setEventCover(editDataProduct.eventCover);
+		this.setEventShortDescription(editDataProduct.eventShortDescription);
+		this.setEventLongDescription(editDataProduct.eventLongDescription);
+		this.setEventLocation(editDataProduct.eventLocation);
+		this.setEventNumberOfPeople(editDataProduct.eventNumberOfPeople);
+		this.setEventStartDate(editDataProduct.eventStartDate);
+		this.setEventEndDate(editDataProduct.eventEndDate);
+		this.setEventStartTime(editDataProduct.eventStartTime);
+		this.setEventEndDate(editDataProduct.eventEndDate);
+		this.setEventStartRegis(editDataProduct.eventStartRegis);
+		this.setEventEndRegis(editDataProduct.eventEndRegis);
+		this.setEventCost(editDataProduct.eventCost);
+		this.setEventYear(editDataProduct.eventYear);
+		this.setEventType(editDataProduct.eventType);
+		this.setEventNote(editDataProduct.eventNote);
+	}
 }
