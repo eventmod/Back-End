@@ -15,6 +15,9 @@ public class Creators {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "creator_id")
 	private int creatorID;
+	
+	@Column(name = "creator_name")
+	private int creatorName;
 
 	@Column(name = "creator_logo")
 	private String creatorLogo;

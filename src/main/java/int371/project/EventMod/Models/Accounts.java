@@ -18,8 +18,8 @@ public class Accounts {
 	@Column(name = "ac_id")
 	private int accountID;
 
-	@Column(name = "ac_name")
-	private String accountName;
+	@Column(name = "ac_username")
+	private String accountUserName;
 
 	@Column(name = "ac_password")
 	private String accountPassword;
@@ -41,8 +41,8 @@ public class Accounts {
 		return accountID;
 	}
 
-	public String getAccountName() {
-		return accountName;
+	public String getaccountUserName() {
+		return accountUserName;
 	}
 
 	public String getAccountPassword() {
@@ -59,8 +59,8 @@ public class Accounts {
 		this.accountID = accountID;
 	}
 
-	public void setAccountName(String accountName) {
-		this.accountName = accountName;
+	public void setaccountUserName(String accountUserName) {
+		this.accountUserName = accountUserName;
 	}
 
 	public void setAccountPassword(String accountPassword) {
