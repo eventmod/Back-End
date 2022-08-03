@@ -12,7 +12,9 @@ import int371.project.EventMod.Exceptions.EventsException;
 import int371.project.EventMod.Exceptions.ExceptionResponse;
 import int371.project.EventMod.Models.Accounts;
 import int371.project.EventMod.Models.Contacts;
+import int371.project.EventMod.Models.Events;
 import int371.project.EventMod.Repositories.ContactsJpaRepository;
+import int371.project.EventMod.Repositories.EventsJpaRepository;
 
 @CrossOrigin
 @RestController
@@ -20,6 +22,9 @@ public class ContactsController {
 
 	@Autowired
 	private ContactsJpaRepository contactsJpa;
+
+	@Autowired
+	private EventsJpaRepository eventsJpa;
 
 ////-------------------------------------------------------- GetMapping -------------------------------------------------------------------------
 	// Show a list of all contacts.
@@ -35,6 +40,17 @@ public class ContactsController {
 		if (contact == null) {
 			throw new EventsException(ExceptionResponse.ERROR_CODE.CONTACT_ID_DOES_NOT_EXIST,
 					"Contact ID" + " : " + contactID + " " + "does not exist");
+		}
+		return contact;
+	}
+
+	// Show list of contacts by eventID
+	@GetMapping("/contacts/{eventID}")
+	public Contacts showContactByEventID(@PathVariable int eventID) {
+		Contacts contact = this.contactsJpa.findById(eventID).orElse(null);
+		if (contact == null) {
+			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_ID_NO_CONTACT,
+					"Event ID" + " : " + eventID + " " + "no contact information.");
 		}
 		return contact;
 	}
