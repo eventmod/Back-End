@@ -31,7 +31,7 @@ public class Contacts {
 	private int eventID;
 
 	@OneToOne
-	@JoinColumn(name = "eventID", insertable = false, updatable = false)
+	@JoinColumn(name = "event_id", insertable = false, updatable = false)
 	Events events;
 
 	// Getter
@@ -52,9 +52,9 @@ public class Contacts {
 		return contactEmail;
 	}
 
-	public int getEventID() {
-		return eventID;
-	}
+	// public int getEventID() {
+	// 	return eventID;
+	// }
 
 	public Events getEvents() {
 		return events;
