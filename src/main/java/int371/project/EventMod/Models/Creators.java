@@ -17,7 +17,7 @@ public class Creators {
 	private int creatorID;
 	
 	@Column(name = "creator_name")
-	private int creatorName;
+	private String creatorName;
 
 	@Column(name = "creator_logo")
 	private String creatorLogo;
@@ -39,4 +39,79 @@ public class Creators {
 
 	@Column(name = "creator_advposition")
 	private String creatorAdvPosition;
+
+	public int getCreatorID() {
+		return creatorID;
+	}
+
+	public String getCreatorName() {
+		return creatorName;
+	}
+
+	public String getCreatorLogo() {
+		return creatorLogo;
+	}
+
+	public String getCreatorDescription() {
+		return creatorDescription;
+	}
+
+	public String getCreatorType() {
+		return creatorType;
+	}
+
+	public String getCreatorLeadName() {
+		return creatorLeadName;
+	}
+
+	public String getCreatorLeadMajor() {
+		return creatorLeadMajor;
+	}
+
+	public String getCreatorAdvName() {
+		return creatorAdvName;
+	}
+
+	public String getCreatorAdvPosition() {
+		return creatorAdvPosition;
+	}
+
+	public void setCreatorID(int creatorID) {
+		this.creatorID = creatorID;
+	}
+
+	public void setCreatorName(String creatorName) {
+		this.creatorName = creatorName;
+	}
+
+	public void setCreatorLogo(String creatorLogo) {
+		this.creatorLogo = creatorLogo;
+	}
+
+	public void setCreatorDescription(String creatorDescription) {
+		this.creatorDescription = creatorDescription;
+	}
+
+	public void setCreatorType(String creatorType) {
+		this.creatorType = creatorType;
+	}
+
+	public void setCreatorLeadName(String creatorLeadName) {
+		this.creatorLeadName = creatorLeadName;
+	}
+
+	public void setCreatorLeadMajor(String creatorLeadMajor) {
+		this.creatorLeadMajor = creatorLeadMajor;
+	}
+
+	public void setCreatorAdvName(String creatorAdvName) {
+		this.creatorAdvName = creatorAdvName;
+	}
+
+	public void setCreatorAdvPosition(String creatorAdvPosition) {
+		this.creatorAdvPosition = creatorAdvPosition;
+	}
+
+	
 }
+

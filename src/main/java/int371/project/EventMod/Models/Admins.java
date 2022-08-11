@@ -18,4 +18,20 @@ public class Admins {
 
 	@Column(name = "admin_name")
 	private String adminName;
+
+	public int getAdminID() {
+		return adminID;
+	}
+
+	public String getAdminName() {
+		return adminName;
+	}
+
+	public void setAdminID(int adminID) {
+		this.adminID = adminID;
+	}
+
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
+	}
 }
