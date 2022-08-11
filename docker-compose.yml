@@ -8,8 +8,8 @@ services:
             - "3000:3000"
         environment:
             - MYSQL_DATABASE=eventmod
-            - MYSQL_USER=Eventmod
-            - MYSQL_PASSWORD=eventadmin
+            - MYSQL_USER=Server
+            - MYSQL_PASSWORD=eventserver
         volumes:
             - /home/eventmodadmin/Back-End/public:/tmp
 
