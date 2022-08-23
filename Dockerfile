@@ -8,5 +8,5 @@ RUN mvn clean package
 FROM adoptopenjdk/openjdk11:latest
 VOLUME /tmp
 EXPOSE 3000
-COPY --from=build $PWD/target/EventMod-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build $PWD/target/Eventmod-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"] 
