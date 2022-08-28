@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+    backend:
+        container_name: backend-dev
+        image: ghcr.io/eventmod/eventmod-backend:dev
+        ports:
+            - "3001:3001"
+        environment:
+            - MYSQL_DATABASE=eventmod
+            - MYSQL_USER=Eventmod
+            - MYSQL_PASSWORD=eventadmin
+        volumes:
+            - /home/eventmodadmin/Back-End/public:/tmp
+
+networks:
+    default:
+        external:
+            name: eventmod-network
