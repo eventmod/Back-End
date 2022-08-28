@@ -24,7 +24,7 @@ public class Tags {
 	private String tagName;
 
 	@OneToMany(mappedBy = "tags", cascade = CascadeType.ALL, orphanRemoval = true)
-	Set<EventsHaveTags> event_have_tags;
+	Set<EventHaveTag> event_have_tag;
 
 //	Getter
 
@@ -50,7 +50,7 @@ public class Tags {
 		tagName = tag_Name;
 	}
 
-	public void setEventHaveTags(Set<EventsHaveTags> event_have_tags) {
-		this.event_have_tags = event_have_tags;
+	public void setEventHaveTags(Set<EventHaveTag> event_have_tag) {
+		this.event_have_tag = event_have_tag;
 	}
 }

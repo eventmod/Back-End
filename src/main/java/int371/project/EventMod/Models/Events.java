@@ -31,16 +31,28 @@ public class Events {
 	@Column(name = "event_shortdescription")
 	private String eventShortDescription;
 
+	@Column(name = "event_longdescription")
+	private String eventLongDescription;
+
 	@Column(name = "event_location")
 	private String eventLocation;
-
-	@Column(name = "event_datetime")
-	private String eventDateTime;
 
 	@Column(name = "event_numberofpeople")
 	private int eventNumberOfPeople;
 
-	@Column(name = "event_datetimeregistration")
+	@Column(name = "event_startdate")
+	private String eventStartDate;
+
+	@Column(name = "event_enddate")
+	private String eventEndDate;
+
+	@Column(name = "event_starttime")
+	private String eventStartTime;
+
+	@Column(name = "event_endtime")
+	private String eventEndTime;
+
+	@Column(name = "event_startregistration")
 	private String eventStartRegis;
 
 	@Column(name = "event_endregistration")
@@ -55,8 +67,8 @@ public class Events {
 	@Column(name = "event_type")
 	private String eventType;
 
-	@Column(name = "event_longdescription")
-	private String eventLongDescription;
+	@Column(name = "event_note")
+	private String eventNote;
 
 	@Column(name = "ac_id")
 	private int accountID;
@@ -66,7 +78,7 @@ public class Events {
 	Accounts accounts;
 
 	@OneToMany(mappedBy = "events", cascade = CascadeType.ALL, orphanRemoval = true)
-	Set<EventsHaveTags> eventHaveTags;
+	Set<EventHaveTag> eventHaveTag;
 
 //	Getter
 
@@ -86,20 +98,40 @@ public class Events {
 		return eventShortDescription;
 	}
 
-	public String getEventLocation() {
-		return eventLocation;
+	public String getEventLongDescription() {
+		return eventLongDescription;
 	}
 
-	public String getEventDateTime() {
-		return eventDateTime;
+	public String getEventLocation() {
+		return eventLocation;
 	}
 
 	public int getEventNumberOfPeople() {
 		return eventNumberOfPeople;
 	}
 
+	public String getEventStartDate() {
+		return eventStartDate;
+	}
+
+	public String getEventEndDate() {
+		return eventEndDate;
+	}
+
+	public String getEventStartTime() {
+		return eventStartTime;
+	}
+
+	public String getEventEndTime() {
+		return eventEndTime;
+	}
+
 	public String getEventStartRegis() {
 		return eventStartRegis;
+	}
+
+	public String getEventEndRegis() {
+		return eventEndRegis;
 	}
 
 	public int getEventCost() {
@@ -110,16 +142,12 @@ public class Events {
 		return eventYear;
 	}
 
-	public String getEventEndRegis() {
-		return eventEndRegis;
-	}
-
 	public String getEventType() {
 		return eventType;
 	}
 
-	public String getEventLongDescription() {
-		return eventLongDescription;
+	public String getEventNote() {
+		return eventNote;
 	}
 
 	public int getAccountID() {
@@ -130,11 +158,11 @@ public class Events {
 		return accounts;
 	}
 
-//	Setter
-
-	public Set<EventsHaveTags> getEventHaveTags() {
-		return eventHaveTags;
+	public Set<EventHaveTag> getEventHaveTag() {
+		return eventHaveTag;
 	}
+
+//	Setter
 
 	public void setEventID(int eventID) {
 		this.eventID = eventID;
@@ -152,20 +180,40 @@ public class Events {
 		this.eventShortDescription = eventShortDescription;
 	}
 
-	public void setEventLocation(String eventLocation) {
-		this.eventLocation = eventLocation;
+	public void setEventLongDescription(String eventLongDescription) {
+		this.eventLongDescription = eventLongDescription;
 	}
 
-	public void setEventDateTime(String eventDateTime) {
-		this.eventDateTime = eventDateTime;
+	public void setEventLocation(String eventLocation) {
+		this.eventLocation = eventLocation;
 	}
 
 	public void setEventNumberOfPeople(int eventNumberOfPeople) {
 		this.eventNumberOfPeople = eventNumberOfPeople;
 	}
 
+	public void setEventStartDate(String eventStartDate) {
+		this.eventStartDate = eventStartDate;
+	}
+
+	public void setEventEndDate(String eventEndDate) {
+		this.eventEndDate = eventEndDate;
+	}
+
+	public void setEventStartTime(String eventStartTime) {
+		this.eventStartTime = eventStartTime;
+	}
+
+	public void setEventEndTime(String eventEndTime) {
+		this.eventEndTime = eventEndTime;
+	}
+
 	public void setEventStartRegis(String eventStartRegis) {
 		this.eventStartRegis = eventStartRegis;
+	}
+
+	public void setEventEndRegis(String eventEndRegis) {
+		this.eventEndRegis = eventEndRegis;
 	}
 
 	public void setEventCost(int eventCost) {
@@ -176,16 +224,12 @@ public class Events {
 		this.eventYear = eventYear;
 	}
 
-	public void setEventEndRegis(String eventEndRegis) {
-		this.eventEndRegis = eventEndRegis;
-	}
-
 	public void setEventType(String eventType) {
 		this.eventType = eventType;
 	}
 
-	public void setEventLongDescription(String eventLongDescription) {
-		this.eventLongDescription = eventLongDescription;
+	public void setEventNote(String eventNote) {
+		this.eventNote = eventNote;
 	}
 
 	public void setAccountID(int accountID) {
@@ -196,7 +240,26 @@ public class Events {
 		this.accounts = accounts;
 	}
 
-	public void setEventHaveTags(Set<EventsHaveTags> eventHaveTags) {
-		this.eventHaveTags = eventHaveTags;
+	public void setEventHaveTag(Set<EventHaveTag> eventHaveTag) {
+		this.eventHaveTag = eventHaveTag;
+	}
+
+	public void setAll(Events editDataEvent) {
+		this.setEventTitle(editDataEvent.eventTitle);
+		this.setEventCover(editDataEvent.eventCover);
+		this.setEventShortDescription(editDataEvent.eventShortDescription);
+		this.setEventLongDescription(editDataEvent.eventLongDescription);
+		this.setEventLocation(editDataEvent.eventLocation);
+		this.setEventNumberOfPeople(editDataEvent.eventNumberOfPeople);
+		this.setEventStartDate(editDataEvent.eventStartDate);
+		this.setEventEndDate(editDataEvent.eventEndDate);
+		this.setEventStartTime(editDataEvent.eventStartTime);
+		this.setEventEndDate(editDataEvent.eventEndDate);
+		this.setEventStartRegis(editDataEvent.eventStartRegis);
+		this.setEventEndRegis(editDataEvent.eventEndRegis);
+		this.setEventCost(editDataEvent.eventCost);
+		this.setEventYear(editDataEvent.eventYear);
+		this.setEventType(editDataEvent.eventType);
+		this.setEventNote(editDataEvent.eventNote);
 	}
 }

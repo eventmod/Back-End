@@ -10,8 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "eventshavetags")
-public class EventsHaveTags {
+@Table(name = "eventhavetag")
+public class EventHaveTag {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
