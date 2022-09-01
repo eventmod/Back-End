@@ -1,8 +1,8 @@
-name: deploy-backend-eventmod
+name: deploy-backend-prd-eventmod
 on:
   push:
     branches:
-      - main
+      - master
   issues:
     types: opened
 jobs:
@@ -21,7 +21,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ghcr.io/chicky0/eventmod-backend:latest
+          tags: ghcr.io/eventmod/eventmod-backend:prd
   deploy:
     needs: build
     runs-on: ubuntu-20.04
@@ -36,18 +36,9 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd Back-End/
-            git pull origin main
+            cd backend-prd/
+            git pull origin master
             sudo docker rm -f backend
-            sudo docker rmi ghcr.io/chicky0/eventmod-backend
-            sudo docker pull ghcr.io/chicky0/eventmod-backend:latest
+            sudo docker rmi ghcr.io/eventmod/eventmod-backend:prd
+            sudo docker pull ghcr.io/eventmod/eventmod-backend:prd
             sudo docker-compose up -d
-  notify:
-    needs: deploy
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: snow-actions/line-notify@v1.0.0
-        with:
-          access_token: ${{ secrets.LINE_ACCESS_TOKEN }}
-          message: |
-            Deploy Backend Success.
