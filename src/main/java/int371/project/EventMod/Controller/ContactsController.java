@@ -44,14 +44,14 @@ public class ContactsController {
 		return contact;
 	}
 
-	// Show list of contacts by eventID
-	// @GetMapping("/contacts/{eventID}")
-	// public Contacts showContactByEventID(@PathVariable int eventID) {
-	// 	Contacts contact = this.contactsJpa.findById(eventID).orElse(null);
-	// 	if (contact == null) {
-	// 		throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_ID_NO_CONTACT,
-	// 				"Event ID" + " : " + eventID + " " + "no contact information.");
-	// 	}
-	// 	return contact;
-	// }
+
+	@GetMapping("/eventcontact/{eventID}")
+	public List<Contacts> showContactByEventID(@PathVariable Integer eventID) {
+		List<Contacts> contact = this.contactsJpa.findByEventID(eventID);
+		if (contact == null) {
+			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_ID_NO_CONTACT,
+			"Event ID : " + eventID + "does not exist contact");			
+		}
+		return contact;
+	}
 }

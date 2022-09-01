@@ -52,13 +52,13 @@ public class Contacts {
 		return contactEmail;
 	}
 
-	// public int getEventID() {
-	// 	return eventID;
-	// }
-
-	public Events getEvents() {
-		return events;
+	public int getEventID() {
+		return eventID;
 	}
+
+	// public Events getEvents() {
+	// 	return events;
+	// }
 
 	// Setter
 
@@ -82,7 +82,7 @@ public class Contacts {
 		this.eventID = eventID;
 	}
 
-	public void setEvents(Events events) {
-		this.events = events;
-	}
+	// public void setEvents(Events events) {
+	// 	this.events = events;
+	// }
 }
