@@ -2,7 +2,7 @@ version: '3.1'
 services:
     backend:
         container_name: backend-prd
-        image: ghcr.io/chicky0/eventmod-backend:prd
+        image: ghcr.io/eventmod/eventmod-backend:prd
         ports:
             - "3000:3000"
         environment:
