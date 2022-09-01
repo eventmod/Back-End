@@ -11,7 +11,7 @@ services:
             - MYSQL_USER=Eventmod
             - MYSQL_PASSWORD=eventadmin
         volumes:
-            - /home/eventmodadmin/backend-prd/public:/tmp
+            - /home/eventmodadmin/backend/public:/tmp
 
 networks:
     default:

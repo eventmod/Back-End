@@ -36,9 +36,9 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd backend-prd/
+            cd backend/
             git pull origin master
-            sudo docker rm -f backend
+            sudo docker rm -f backend-prd
             sudo docker rmi ghcr.io/eventmod/eventmod-backend:prd
             sudo docker pull ghcr.io/eventmod/eventmod-backend:prd
             sudo docker-compose up -d
