@@ -41,4 +41,4 @@ jobs:
             sudo docker rm -f backend-prd
             sudo docker rmi ghcr.io/eventmod/eventmod-backend:prd
             sudo docker pull ghcr.io/eventmod/eventmod-backend:prd
-            sudo docker-compose up -d
+            sudo docker-compose -f docker-compose.yml up -d
