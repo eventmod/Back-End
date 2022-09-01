@@ -1,6 +1,6 @@
 version: '3.1'
 services:
-    backend:
+    backend-prd:
         container_name: backend-prd
         image: ghcr.io/eventmod/eventmod-backend:prd
         ports:
