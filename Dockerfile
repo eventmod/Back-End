@@ -2,6 +2,7 @@
 FROM maven AS build
 COPY src $PWD/src
 COPY pom.xml $PWD
+RUN mvn install
 RUN mvn clean package
   
 # production stage
