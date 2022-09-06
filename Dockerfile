@@ -2,7 +2,8 @@
 FROM maven AS build
 COPY src $PWD/src
 COPY pom.xml $PWD
-RUN sudo mvn clean package
+RUN mvn clean install
+RUN mvn package
   
 # production stage
 FROM adoptopenjdk/openjdk11:latest
