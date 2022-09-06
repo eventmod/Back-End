@@ -25,7 +25,7 @@ jobs:
             docker rm -f backend-dev
             docker rmi ghcr.io/eventmod/eventmod-backend:dev
             docker build -f Dockerfile-dev . --tag ghcr.io/eventmod/eventmod-backend:dev
-            docker echo ${{ secrets.TOKEN }} | login ghcr.io -u ${{ github.actor }} --password-stdin
+            docker echo ${{ secrets.GITHUB_TOKEN }} | login ghcr.io -u ${{ github.actor }} --password-stdin
             docker push ghcr.io/eventmod/eventmod-backend:dev
   deploy:
     needs: build
