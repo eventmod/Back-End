@@ -38,7 +38,7 @@ jobs:
           script: |
             cd backend/
             git pull origin master
-            sudo docker rm -f backend-prd
-            sudo docker rmi ghcr.io/eventmod/eventmod-backend:prd
-            sudo docker pull ghcr.io/eventmod/eventmod-backend:prd
-            sudo docker-compose -f docker-compose.yml up -d
+            docker rm -f backend-prd
+            docker rmi ghcr.io/eventmod/eventmod-backend:prd
+            docker pull ghcr.io/eventmod/eventmod-backend:prd
+            docker-compose -f docker-compose.yml up -d
