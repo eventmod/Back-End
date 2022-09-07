@@ -24,7 +24,7 @@ jobs:
             git pull origin dev
             docker rm -f backend-dev
             docker rmi eventmod-backend:dev
-            docker build . --t eventmod-backend:dev
+            docker build . -t eventmod-backend:dev
   deploy:
     needs: build
     runs-on: ubuntu-20.04
