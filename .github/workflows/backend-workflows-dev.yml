@@ -23,8 +23,8 @@ jobs:
             git checkout dev
             git pull origin dev
             docker rm -f backend-dev
-            docker rmi ghcr.io/eventmod/eventmod-backend:dev
-            docker build -f Dockerfile-dev . --tag ghcr.io/eventmod/eventmod-backend:dev
+            docker rmi eventmod-backend:dev
+            docker build -f Dockerfile-dev . --tag eventmod-backend:dev
   deploy:
     needs: build
     runs-on: ubuntu-20.04
