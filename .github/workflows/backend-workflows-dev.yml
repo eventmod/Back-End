@@ -11,17 +11,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@main
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
+      - name: pull images and deploy
+        uses: appleboy/ssh-action@master
         with:
-          registry: ghcr.io
-          username: ${{ secrets.USER }}
-          password: ${{ secrets.TOKEN }}
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: ghcr.io/eventmod/eventmod-backend:dev
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd backend/
+            git checkout dev
+            git pull origin dev
+            docker rm -f backend-dev
+            docker rmi ghcr.io/eventmod/eventmod-backend:dev
+            docker build -f Dockerfile-dev . --tag ghcr.io/eventmod/eventmod-backend:dev
   deploy:
     needs: build
     runs-on: ubuntu-20.04
@@ -37,11 +40,8 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd backend/
-            git pull origin dev
-            sudo docker rm -f backend-dev
-            sudo docker rmi ghcr.io/eventmod/eventmod-backend:dev
-            sudo docker pull ghcr.io/eventmod/eventmod-backend:dev
-            sudo docker-compose -f docker-compose-dev.yml up -d
+            git checkout dev
+            docker-compose -f docker-compose-dev.yml up -d
   notify:
     needs: deploy
     runs-on: ubuntu-20.04
@@ -50,4 +50,4 @@ jobs:
         with:
           access_token: ${{ secrets.LINE_ACCESS_TOKEN }}
           message: |
-            Deploy Backend Dev Success.
+            Deploy Backend Dev Success.  
