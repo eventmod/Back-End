@@ -17,7 +17,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class JwtTokenService {
 	@Value("#{24*60*60}")
 	private long JWT_TOKEN_VALIDITY;
-	@Value("${jwt.secret}")
+	@Value("EventMod")
 	private String secret;
 
 	// retrieve username from jwt token
