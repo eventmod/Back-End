@@ -4,8 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import int371.project.EventMod.Exceptions.EventsException;
@@ -26,7 +31,7 @@ public class ContactController {
 	// @Autowired
 	// private EventsJpaRepository eventsJpa;
 
-////-------------------------------------------------------- GetMapping -------------------------------------------------------------------------
+	//-------------------------------------------------------- GetMapping -------------------------------------------------------------------------
 	// Show a list of all contacts.
 	@GetMapping("/contacts")
 	public List<Contacts> showAllContacts() {
@@ -54,4 +59,29 @@ public class ContactController {
 		}
 		return contact;
 	}
+
+	// ------------------------------------ POST MAPPING ------------------------------------
+	@PostMapping("/addContact")
+	public void addContact(@RequestBody Contacts contact) {
+		contactsJpa.save(contact);
+	}
+
+	// ------------------------------------ PUT MAPPING ------------------------------------
+	@PutMapping("/editContact")
+	public void editContact(@RequestBody Contacts newContact) {
+		Contacts contact = contactsJpa.findById(newContact.getContactID()).orElse(null);
+		contact.setContactID(newContact.getContactID());
+		contact.setContactName(newContact.getContactName());
+		contact.setContactPhone(newContact.getContactPhone());
+		contact.setContactEmail(newContact.getContactEmail());
+		contact.setEventID(newContact.getEventID());
+		contactsJpa.save(contact);
+	}
+
+	// ------------------------------------ DELETE MAPPING ------------------------------------
+	@DeleteMapping("/deleteContact")
+	public void deleteContact(@RequestParam("contactID") int contactID) {
+		contactsJpa.deleteById(contactID);
+	}
+
 }

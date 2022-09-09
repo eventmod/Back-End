@@ -58,7 +58,7 @@ public class CreatorController {
 
   /* ------------------- PUT MAPPING ------------------- */
   @PutMapping("/updateCreatorDetail")
-  public void updateAdmin (@RequestBody Creators newCreators) throws Exception {
+  public void updateCreator (@RequestBody Creators newCreators) throws Exception {
     Creators creator = creatorsJpaRepository.findById(newCreators.getCreatorID()).orElse(null);
     creator.setAll(newCreators);
     creatorsJpaRepository.save(creator);
@@ -67,7 +67,7 @@ public class CreatorController {
 
   /* ------------------- DELETE MAPPING ------------------- */
   @DeleteMapping("/delCreator")
-  public void delAdmin (@RequestParam("creatorsID") int creatorsID) {
+  public void delCreator (@RequestParam("creatorsID") int creatorsID) {
     creatorsJpaRepository.deleteById(creatorsID);
   }
 }
