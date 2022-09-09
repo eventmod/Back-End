@@ -15,7 +15,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class JwtTokenService {
-	@Value("#{${project.max-token-interval-hour}*60*60}")
+	@Value("#{24*60*60}")
 	private long JWT_TOKEN_VALIDITY;
 	@Value("${jwt.secret}")
 	private String secret;
