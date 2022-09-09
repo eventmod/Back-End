@@ -112,6 +112,18 @@ public class Creators {
 		this.creatorAdvPosition = creatorAdvPosition;
 	}
 
+  public void setAll(Creators newCreator) {
+		this.setCreatorID(newCreator.getCreatorID());
+		this.setCreatorName(newCreator.getCreatorName());
+		this.setCreatorLogo(newCreator.getCreatorLogo());
+		this.setCreatorDescription(newCreator.getCreatorDescription());
+		this.setCreatorType(newCreator.getCreatorType());
+		this.setCreatorLeadName(newCreator.getCreatorLeadName());
+		this.setCreatorLeadMajor(newCreator.getCreatorLeadMajor());
+		this.setCreatorAdvName(newCreator.getCreatorAdvName());
+		this.setCreatorAdvPosition(newCreator.getCreatorAdvPosition());
+  }
+
 	
 }
 

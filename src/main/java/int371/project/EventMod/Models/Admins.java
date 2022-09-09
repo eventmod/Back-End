@@ -34,4 +34,9 @@ public class Admins {
 	public void setAdminName(String adminName) {
 		this.adminName = adminName;
 	}
+
+  public void setAll(Admins newAdmins) {
+		this.setAdminID(newAdmins.getAdminID());
+		this.setAdminName(newAdmins.getAdminName());
+  }
 }

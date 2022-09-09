@@ -18,7 +18,7 @@ import int371.project.EventMod.Repositories.ContactsJpaRepository;
 
 @CrossOrigin
 @RestController
-public class ContactsController {
+public class ContactController {
 
 	@Autowired
 	private ContactsJpaRepository contactsJpa;

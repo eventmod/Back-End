@@ -1,6 +1,5 @@
 package int371.project.EventMod.Models;
 
-import java.sql.*;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -75,7 +74,7 @@ public class Events {
 
 	@OneToOne
 	@JoinColumn(name = "ac_id", insertable = false, updatable = false)
-	Accounts accounts;
+	AuthenticationUser accounts;
 
 	@OneToMany(mappedBy = "events", cascade = CascadeType.ALL, orphanRemoval = true)
 	Set<EventHaveTag> eventHaveTag;
@@ -154,7 +153,7 @@ public class Events {
 		return accountID;
 	}
 
-	public Accounts getAccounts() {
+	public AuthenticationUser getAccounts() {
 		return accounts;
 	}
 
@@ -236,7 +235,7 @@ public class Events {
 		this.accountID = accountID;
 	}
 
-	public void setAccounts(Accounts accounts) {
+	public void setAccounts(AuthenticationUser accounts) {
 		this.accounts = accounts;
 	}
 
