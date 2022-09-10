@@ -25,7 +25,7 @@ jobs:
             docker rm -f backend-dev
             docker rmi ghcr.io/eventmod/eventmod-backend:dev
             sudo chmod 755 public/hsperfdata_root/1
-            docker build -f Dockerfile-dev . --tag ghcr.io/eventmod/eventmod-backend:dev
+            sudo docker build -f Dockerfile-dev . --tag ghcr.io/eventmod/eventmod-backend:dev
   deploy:
     needs: build
     runs-on: ubuntu-20.04
