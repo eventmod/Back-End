@@ -24,9 +24,7 @@ jobs:
             git pull origin master
             docker rm -f backend-prd
             docker rmi ghcr.io/eventmod/eventmod-backend:prd
-            sudo chmod 755 public/hsperfdata_root/1
-            sudo chmod 755 public/ *
-            docker build -f Dockerfile . --tag ghcr.io/eventmod/eventmod-backend:prd
+            sudo docker build -f Dockerfile . --tag ghcr.io/eventmod/eventmod-backend:prd
   deploy:
     needs: build
     runs-on: ubuntu-20.04

@@ -24,7 +24,6 @@ jobs:
             git pull origin dev
             docker rm -f backend-dev
             docker rmi ghcr.io/eventmod/eventmod-backend:dev
-            sudo chmod 755 public/hsperfdata_root/1
             sudo docker build -f Dockerfile-dev . --tag ghcr.io/eventmod/eventmod-backend:dev
   deploy:
     needs: build
