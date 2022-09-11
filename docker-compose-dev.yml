@@ -4,7 +4,7 @@ services:
         container_name: backend-dev
         image: ghcr.io/eventmod/eventmod-backend:dev
         ports:
-            - "3001:3000"
+            - "3001:3001"
         environment:
             - MYSQL_DATABASE=eventmod
             - MYSQL_USER=Eventmod
