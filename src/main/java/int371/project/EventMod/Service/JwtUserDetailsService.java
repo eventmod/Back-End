@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,15 +24,14 @@ public class JwtUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		AuthenticationUser user = userRepository.findByUsername(username);
-		String roles = "";
+		String role = "";
     if (user.getAdmins() != null && user.getCreators() == null) {
-      roles = "ADMIN";
+      role = "ADMIN";
     } else if (user.getCreators() != null && user.getAdmins() == null) {
-      roles = "CREATOR";
+      role = "CREATOR";
     }
 		List<GrantedAuthority> authorities = new ArrayList<>();
-		authorities.add(new SimpleGrantedAuthority(roles));
-		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-				authorities);
+		authorities.add(new SimpleGrantedAuthority(role));
+		return new User(user.getUsername(), user.getPassword(), authorities);
 	}
 }

@@ -1,5 +1,6 @@
 package  int371.project.EventMod.Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Column;
@@ -14,7 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 @Entity(name = "accounts")
-public class AuthenticationUser extends User {
+public class AuthenticationUser extends User implements Serializable {
 
 	public AuthenticationUser() {
 		super("anonymous", "", new ArrayList<>());
@@ -78,12 +79,12 @@ public class AuthenticationUser extends User {
 		this.accountID = accountID;
 	}
 
-	public void setaccountUserName(String accountUsername) {
-		this.username = accountUsername;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public void setAccountPassword(String accountPassword) {
-		this.password = accountPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public void setAccountFaculty(String accountFaculty) {

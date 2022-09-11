@@ -57,6 +57,12 @@ public class EventsController {
 		return event;
 	}
 
+	// SHow list of events by accountID
+	@GetMapping("/eventsbyaccount/{accountID}")
+	public List<Events> showEventsByAccountID(@PathVariable int accountID) {
+		return this.eventsJpa.findByAccountID(accountID);
+	}
+
 	// Browse Images Files
 	@GetMapping(value = "/Files/{filename:.+}", produces = MediaType.IMAGE_JPEG_VALUE)
 	public Resource serveProduct(@PathVariable String filename) {
@@ -74,12 +80,14 @@ public class EventsController {
 
 	// Add Event with Img
 	@PostMapping("/addEventWithImage")
-	public void createEventWithImage(@RequestParam("event") String newEvent, @RequestParam("file") MultipartFile file) {
+	public int createEventWithImage(@RequestParam("event") String newEvent, @RequestParam("file") MultipartFile file) {
 		Events event = new Gson().fromJson(newEvent, Events.class);
 		List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventTitle(event.getEventTitle());
 		if (checkDuplicateEventName.size() == 0) {
 			this.eventsJpa.save(event);
 			handleFileUpload(file);
+			Events find = eventsJpa.findByEventTitle(event.getEventTitle());
+			return find.getEventID();
 		} else {
 			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_NAME_ALREADY_EXIST,
 					"Event name" + event.getEventTitle() + "already exist");
