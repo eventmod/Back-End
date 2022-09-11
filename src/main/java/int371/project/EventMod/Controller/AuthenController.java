@@ -66,9 +66,9 @@ public class AuthenController {
 	}
 
   @GetMapping("/getID/{username}")
-  public int findIDByUsername(@PathVariable("username") String username) {
+  public AuthenticationUser findByUsername(@PathVariable("username") String username) {
     AuthenticationUser account = accountsJpaRepository.findByUsername(username);
-    return account.getAccountID();
+    return account;
   }
 
   // --------------------- PostMapping ---------------------
