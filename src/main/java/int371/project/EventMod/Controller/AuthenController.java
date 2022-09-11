@@ -41,6 +41,7 @@ public class AuthenController {
   @GetMapping("/me")
   public AuthenticationUser getMe() {
     String username = ServiceUtil.getUsername();
+    // System.out.println(username);
     return accountsJpaRepository.findByUsername(username);
   }
 
@@ -49,7 +50,7 @@ public class AuthenController {
     return accountsJpaRepository.findAll();
   }
 
-  @GetMapping(value = "/checkUsername/{username}")
+  @GetMapping("/checkUsername/{username}")
 	public boolean checkUsername(@PathVariable("username") String username) {
 		try {
 			if (accountsJpaRepository.findByUsername(username).getUsername().equals(username)) {
@@ -64,6 +65,12 @@ public class AuthenController {
 		}
 	}
 
+  @GetMapping("/getID/{username}")
+  public AuthenticationUser findByUsername(@PathVariable("username") String username) {
+    AuthenticationUser account = accountsJpaRepository.findByUsername(username);
+    return account;
+  }
+
   // --------------------- PostMapping ---------------------
 
   @PostMapping("/register")
@@ -74,8 +81,8 @@ public class AuthenController {
     if (!checkUsername(username)) {
       System.out.println("Pass Check Username");
       AuthenticationUser newUser = new AuthenticationUser();
-      newUser.setaccountUserName(username);
-      newUser.setAccountPassword(encodedPassword);
+      newUser.setUsername(username);
+      newUser.setPassword(encodedPassword);
       newUser.setAccountFaculty(faculty.orElse(null));
       accountsJpaRepository.save(newUser);
       return "Register Complete";
@@ -86,6 +93,7 @@ public class AuthenController {
   @PostMapping("/login")
 	public JwtResponse getlogin(@RequestBody JwtRequest authenticationRequest) throws Exception {
 		AuthenticationUser user = accountsJpaRepository.findByUsername(authenticationRequest.getUsername());
+    // System.out.println("User: " + user);
 		if (user == null) {
 			throw new Exception();
 		}
@@ -93,15 +101,15 @@ public class AuthenController {
 			throw new Exception();
 		}
 		UserDetails userdetail = new User(user.getUsername(), user.getPassword(), new ArrayList<>());
-    String roles = "";
+    // System.out.println("userDetails: " + userdetail);
+    String role = "";
     if (user.getAdmins() != null && user.getCreators() == null) {
-      roles = "ADMIN";
+      role = "ADMIN";
     } else if (user.getCreators() != null && user.getAdmins() == null) {
-      roles = "CREATOR";
-    } else {
-      throw new Exception();
+      role = "CREATOR";
     }
-		String tk = jwtTokenService.generateToken(userdetail, roles);
+		String tk = jwtTokenService.generateToken(userdetail, role);
+    // System.out.println(tk);
 		return new JwtResponse(tk);
 	}
 }
