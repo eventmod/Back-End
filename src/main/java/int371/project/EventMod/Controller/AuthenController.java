@@ -94,7 +94,6 @@ public class AuthenController {
   @PostMapping("/login")
 	public JwtResponse getlogin(@RequestBody JwtRequest authenticationRequest) throws Exception {
 		AuthenticationUser user = accountsJpaRepository.findByUsername(authenticationRequest.getUsername());
-    // System.out.println("User: " + user);
 		if (user == null) {
 			throw new Exception();
 		}

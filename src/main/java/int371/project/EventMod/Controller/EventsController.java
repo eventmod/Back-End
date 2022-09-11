@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -69,6 +70,11 @@ public class EventsController {
 		return storageService.loadAsResource(filename);
 	}
 
+	@GetMapping("/getEventByTitle/{title}")
+	public Events getEvent(@PathVariable String title) {
+		return eventsJpa.findByEventTitle(title);
+	}
+
 //  ----------------------------------------------------------- PostMapping --------------------------------------------------------------------
 
 	// Add Cover Image
@@ -79,19 +85,21 @@ public class EventsController {
 	}
 
 	// Add Event with Img
-	@PostMapping("/addEventWithImage")
-	public int createEventWithImage(@RequestParam("event") String newEvent, @RequestParam("file") MultipartFile file) {
-		Events event = new Gson().fromJson(newEvent, Events.class);
-		List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventTitle(event.getEventTitle());
-		if (checkDuplicateEventName.size() == 0) {
-			this.eventsJpa.save(event);
-			handleFileUpload(file);
-			Events find = eventsJpa.findByEventTitle(event.getEventTitle());
-			return find.getEventID();
-		} else {
-			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_NAME_ALREADY_EXIST,
-					"Event name" + event.getEventTitle() + "already exist");
-		}
+	// @PostMapping("/addEventWithImage")
+	// public void createEventWithImage(@RequestParam("event") String newEvent, @RequestParam("file") MultipartFile file) {
+	// 	Events event = new Gson().fromJson(newEvent, Events.class);
+	// 	List<Events> checkDuplicateEventName = this.eventsJpa.findAllByEventTitle(event.getEventTitle());
+	// 	if (checkDuplicateEventName.size() == 0) {
+	// 		this.eventsJpa.save(event);
+	// 		handleFileUpload(file);
+	// 	} else {
+	// 		throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_NAME_ALREADY_EXIST,
+	// 				"Event name" + event.getEventTitle() + "already exist");
+	// 	}
+	// }
+	@PostMapping("/addEvent")
+	public void addEvent(@RequestBody Events event) {
+		eventsJpa.save(event);
 	}
 
 //  ---------------------------------------------------------DeleteMapping--------------------------------------------------------------------
