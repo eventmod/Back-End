@@ -24,7 +24,7 @@ jobs:
             git pull origin dev
             docker rm -f backend-dev
             docker rmi ghcr.io/eventmod/eventmod-backend:dev
-            docker build -f Dockerfile-dev . --tag ghcr.io/eventmod/eventmod-backend:dev
+            sudo docker build -f Dockerfile-dev . --tag ghcr.io/eventmod/eventmod-backend:dev
   deploy:
     needs: build
     runs-on: ubuntu-20.04
@@ -50,4 +50,4 @@ jobs:
         with:
           access_token: ${{ secrets.LINE_ACCESS_TOKEN }}
           message: |
-            Deploy Backend Dev Success.  
+            Deploy Backend Dev Success.
