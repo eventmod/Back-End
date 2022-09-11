@@ -72,7 +72,8 @@ public class EventsController {
 
 	@GetMapping("/getEventByTitle/{title}")
 	public Events getEvent(@PathVariable String title) {
-		return eventsJpa.findByEventTitle(title);
+		Events event = eventsJpa.findByEventTitle(title);
+		return event;
 	}
 
 //  ----------------------------------------------------------- PostMapping --------------------------------------------------------------------
