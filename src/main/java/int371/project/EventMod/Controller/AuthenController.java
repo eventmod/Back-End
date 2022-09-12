@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -93,7 +94,6 @@ public class AuthenController {
   @PostMapping("/login")
 	public JwtResponse getlogin(@RequestBody JwtRequest authenticationRequest) throws Exception {
 		AuthenticationUser user = accountsJpaRepository.findByUsername(authenticationRequest.getUsername());
-    // System.out.println("User: " + user);
 		if (user == null) {
 			throw new Exception();
 		}
@@ -112,4 +112,9 @@ public class AuthenController {
     // System.out.println(tk);
 		return new JwtResponse(tk);
 	}
+
+  @DeleteMapping("/delAccount/{accountID}")
+  public void delAccount (@PathVariable int accountID) {
+    accountsJpaRepository.deleteById(accountID);
+  }
 }

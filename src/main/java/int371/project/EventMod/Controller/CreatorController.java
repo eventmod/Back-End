@@ -66,8 +66,8 @@ public class CreatorController {
 
 
   /* ------------------- DELETE MAPPING ------------------- */
-  @DeleteMapping("/delCreator")
-  public void delCreator (@RequestParam("creatorsID") int creatorsID) {
+  @DeleteMapping("/delCreator/{creatorsID}")
+  public void delCreator (@PathVariable int creatorsID) {
     creatorsJpaRepository.deleteById(creatorsID);
   }
 }
