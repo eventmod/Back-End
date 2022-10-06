@@ -40,6 +40,12 @@ public class EventsController {
 		this.storageService = storageService;
 	}
 
+	// Check Health
+	@GetMapping("/checkHealth")
+	public String checkHealth() {
+		return "Healthy";
+	}
+
 ////-------------------------------------------------------- GetMapping -------------------------------------------------------------------------
 	// Show a list of all events.
 	@GetMapping("/events")
