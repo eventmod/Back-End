@@ -41,7 +41,7 @@ public class EventsJoinedController {
 
   @GetMapping("/findJoinedByEventID/{eventid}")
   public List<EventsJoined> showLineaccountByEventID (@PathVariable int eventid) {
-    return this.eventsJoinedJpaRepository.findByEventsID(eventid);
+    return this.eventsJoinedJpaRepository.findByEventID(eventid);
   }
 
   /* ------------------- POST MAPPING ------------------- */
