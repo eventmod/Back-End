@@ -15,8 +15,8 @@ public class EventsJoined {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "eventsjoined_id")
-	private int eventsJoinedID;
+	@Column(name = "eventjoined_id")
+	private int eventJoinedID;
 
 	@Column(name = "event_id")
 	private int eventID;
@@ -34,8 +34,8 @@ public class EventsJoined {
 
 //	Getter
 
-		public int getEventsJoinedID() {
-		return eventsJoinedID;
+		public int getEventJoinedID() {
+		return eventJoinedID;
 	}
 
 	public int getEventID() {
@@ -48,8 +48,8 @@ public class EventsJoined {
 
 //	Setter
 
-	public void setEventsJoinedID(int eventsJoinedID) {
-		this.eventsJoinedID = eventsJoinedID;
+	public void setEventJoinedID(int eventJoinedID) {
+		this.eventJoinedID = eventJoinedID;
 	}
 
 	public void setEventID(int eventID) {
