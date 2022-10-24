@@ -43,10 +43,6 @@ public class Lineaccounts {
 		return lineaccStudentID;
 	}
 
-	// public Set<EventsHaveTags> getEvent_have_tags() {
-	// return event_have_tags;
-	// }
-
 //	Setter
 
 	public void setLineaccID(int lineaccID) {
