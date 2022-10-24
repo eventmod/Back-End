@@ -7,6 +7,6 @@ import int371.project.EventMod.Models.EventsJoined;
 
 public interface EventsJoinedJpaRepository extends JpaRepository<EventsJoined, Integer> {
 
-  List<EventsJoined> findByEventsID(Integer eventID);
+  List<EventsJoined> findByEventID(Integer eventID);
   
 }
