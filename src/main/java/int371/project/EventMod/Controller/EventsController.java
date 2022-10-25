@@ -23,7 +23,9 @@ import org.springframework.web.multipart.MultipartFile;
 import int371.project.EventMod.Exceptions.EventsException;
 import int371.project.EventMod.Exceptions.ExceptionResponse;
 import int371.project.EventMod.Exceptions.StorageFileNotFoundException;
+import int371.project.EventMod.Models.Contacts;
 import int371.project.EventMod.Models.Events;
+import int371.project.EventMod.Repositories.ContactsJpaRepository;
 import int371.project.EventMod.Repositories.EventsJpaRepository;
 import int371.project.EventMod.Service.StorageService;
 
@@ -32,6 +34,9 @@ import int371.project.EventMod.Service.StorageService;
 public class EventsController {
 	@Autowired
 	private EventsJpaRepository eventsJpa;
+
+	@Autowired
+	private ContactsJpaRepository contactsJpaRepository;
 
 	final StorageService storageService;
 
@@ -111,12 +116,16 @@ public class EventsController {
 
 //  ---------------------------------------------------------DeleteMapping--------------------------------------------------------------------
 	// Delete event by eventID
-	@DeleteMapping("/events/{eventID}")
+	@DeleteMapping("/deleteevents/{eventID}")
 	public String deleteEvent(@PathVariable int eventID) throws IOException {
 		Events event = eventsJpa.findById(eventID).orElse(null);
 		if (event == null) {
 			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_ID_DOES_NOT_EXIST,
 					"Event ID" + " : " + eventID + " " + "cannot be deleted because the Event ID cannot be found.");
+		}
+		List<Contacts> c = contactsJpaRepository.findByEventID(eventID);
+		for (int i = 0; i < c.size(); i++) {
+			contactsJpaRepository.deleteById(c.get(i).getContactID());
 		}
 		storageService.delete(event.getEventCover());
 		eventsJpa.deleteById(eventID);
