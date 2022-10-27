@@ -135,7 +135,7 @@ public class EventsController {
 //  -----------------------------------------------------------PutMapping-----------------------------------------------------------------------
 	// Edit event information with image
 	@PutMapping("/updateEventWithImage")
-	public String updateEvent(@RequestParam("eventID") int eventID, @RequestParam("event") String updateEvent,
+	public String updateEventWithImage(@RequestParam("eventID") int eventID, @RequestParam("event") String updateEvent,
 			@RequestParam("file") MultipartFile file) throws Exception {
 		Events editDataEvent = new Gson().fromJson(updateEvent, Events.class);
 		Events event = eventsJpa.findById(eventID).orElse(null);
@@ -148,6 +148,22 @@ public class EventsController {
 		eventsJpa.save(event);
 		storageService.store(file);
 		return "Update Data Event ID : " + eventID + " Success";
+	}
+
+	@PutMapping("/updateEvent/{eventID}")
+	public String updateEvent(@PathVariable int eventID, @RequestBody Events updateEvent) {
+		Events event = eventsJpa.findById(eventID).orElse(null);
+		event.setAll(updateEvent);
+		eventsJpa.save(event);
+		return "Update Data Event ID : " + eventID + " Success";
+	}
+
+	@PutMapping("/updateImage/{eventID}")
+	public String updateImage(@PathVariable int eventID, @RequestBody MultipartFile file) throws IOException {
+		Events event = eventsJpa.findById(eventID).orElse(null);
+		storageService.delete(event.getEventCover());
+		storageService.store(file);
+		return "Update Image Event ID : " + eventID + " Success";
 	}
 
 //  ---------------------------------- ExceptionHandler ----------------------------------
