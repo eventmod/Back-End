@@ -67,10 +67,9 @@ public class ContactController {
 	}
 
 	// ------------------------------------ PUT MAPPING ------------------------------------
-	@PutMapping("/editContact")
-	public void editContact(@RequestBody Contacts newContact) {
-		Contacts contact = contactsJpa.findById(newContact.getContactID()).orElse(null);
-		contact.setContactID(newContact.getContactID());
+	@PutMapping("/editContact/{contactID}")
+	public void editContact(@PathVariable int contactID ,@RequestBody Contacts newContact) {
+		Contacts contact = contactsJpa.findById(contactID).orElse(null);
 		contact.setContactName(newContact.getContactName());
 		contact.setContactPhone(newContact.getContactPhone());
 		contact.setContactEmail(newContact.getContactEmail());
