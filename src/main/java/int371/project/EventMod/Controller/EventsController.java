@@ -134,8 +134,8 @@ public class EventsController {
 
 //  -----------------------------------------------------------PutMapping-----------------------------------------------------------------------
 	// Edit event information with image
-	@PutMapping("/updateEventWithImage/{eventID}")
-	public String updateEvent(@PathVariable int eventID, @RequestParam("event") String updateEvent,
+	@PutMapping("/updateEventWithImage")
+	public String updateEvent(@RequestParam("eventID") int eventID, @RequestParam("event") String updateEvent,
 			@RequestParam("file") MultipartFile file) throws Exception {
 		Events editDataEvent = new Gson().fromJson(updateEvent, Events.class);
 		Events event = eventsJpa.findById(eventID).orElse(null);
