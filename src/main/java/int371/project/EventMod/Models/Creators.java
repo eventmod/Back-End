@@ -19,9 +19,6 @@ public class Creators {
 	@Column(name = "creator_name")
 	private String creatorName;
 
-	@Column(name = "creator_logo")
-	private String creatorLogo;
-
 	@Column(name = "creator_description")
 	private String creatorDescription;
 
@@ -46,10 +43,6 @@ public class Creators {
 
 	public String getCreatorName() {
 		return creatorName;
-	}
-
-	public String getCreatorLogo() {
-		return creatorLogo;
 	}
 
 	public String getCreatorDescription() {
@@ -84,10 +77,6 @@ public class Creators {
 		this.creatorName = creatorName;
 	}
 
-	public void setCreatorLogo(String creatorLogo) {
-		this.creatorLogo = creatorLogo;
-	}
-
 	public void setCreatorDescription(String creatorDescription) {
 		this.creatorDescription = creatorDescription;
 	}
@@ -115,7 +104,6 @@ public class Creators {
   public void setAll(Creators newCreator) {
 		this.setCreatorID(newCreator.getCreatorID());
 		this.setCreatorName(newCreator.getCreatorName());
-		this.setCreatorLogo(newCreator.getCreatorLogo());
 		this.setCreatorDescription(newCreator.getCreatorDescription());
 		this.setCreatorType(newCreator.getCreatorType());
 		this.setCreatorLeadName(newCreator.getCreatorLeadName());

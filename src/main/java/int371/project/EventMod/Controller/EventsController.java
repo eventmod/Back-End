@@ -3,8 +3,6 @@ package int371.project.EventMod.Controller;
 import java.io.IOException;
 import java.util.List;
 
-import com.google.gson.Gson;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
@@ -134,22 +132,6 @@ public class EventsController {
 
 //  -----------------------------------------------------------PutMapping-----------------------------------------------------------------------
 	// Edit event information with image
-	@PutMapping("/updateEventWithImage")
-	public String updateEventWithImage(@RequestParam("eventID") int eventID, @RequestParam("event") String updateEvent,
-			@RequestParam("file") MultipartFile file) throws Exception {
-		Events editDataEvent = new Gson().fromJson(updateEvent, Events.class);
-		Events event = eventsJpa.findById(eventID).orElse(null);
-		if (event == null) {
-			throw new EventsException(ExceptionResponse.ERROR_CODE.EVENTS_ID_DOES_NOT_EXIST,
-					"Event ID" + " : " + eventID + " " + "cannot be updated.");
-		}
-		storageService.delete(event.getEventCover());
-		event.setAll(editDataEvent);
-		eventsJpa.save(event);
-		storageService.store(file);
-		return "Update Data Event ID : " + eventID + " Success";
-	}
-
 	@PutMapping("/updateEvent/{eventID}")
 	public String updateEvent(@PathVariable int eventID, @RequestBody Events updateEvent) {
 		Events event = eventsJpa.findById(eventID).orElse(null);

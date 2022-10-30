@@ -66,6 +66,9 @@ public class Events {
 	@Column(name = "event_type")
 	private String eventType;
 
+	@Column(name = "event_joinlink")
+	private String eventJoinLink;
+
 	@Column(name = "event_note")
 	private String eventNote;
 
@@ -143,6 +146,10 @@ public class Events {
 
 	public String getEventType() {
 		return eventType;
+	}
+
+	public String getEventJoinLink() {
+		return eventJoinLink;
 	}
 
 	public String getEventNote() {
@@ -227,6 +234,10 @@ public class Events {
 		this.eventType = eventType;
 	}
 
+	public void setEventJoinLink(String eventJoinLink) {
+		this.eventJoinLink = eventJoinLink;
+	}
+
 	public void setEventNote(String eventNote) {
 		this.eventNote = eventNote;
 	}
@@ -258,6 +269,7 @@ public class Events {
 		this.setEventEndRegis(editDataEvent.eventEndRegis);
 		this.setEventCost(editDataEvent.eventCost);
 		this.setEventYear(editDataEvent.eventYear);
+		this.setEventJoinLink(editDataEvent.eventJoinLink);
 		this.setEventType(editDataEvent.eventType);
 		this.setEventNote(editDataEvent.eventNote);
 	}
