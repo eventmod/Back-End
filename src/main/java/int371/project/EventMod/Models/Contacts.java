@@ -27,6 +27,9 @@ public class Contacts {
 	@Column(name = "c_email")
 	private String contactEmail;
 
+	@Column(name = "c_role")
+	private String contactRole;
+
 	@Column(name = "event_id")
 	private int eventID;
 
@@ -50,6 +53,10 @@ public class Contacts {
 
 	public String getContactEmail() {
 		return contactEmail;
+	}
+
+	public String getContactRole() {
+		return contactRole;
 	}
 
 	public int getEventID() {
@@ -76,6 +83,10 @@ public class Contacts {
 
 	public void setContactEmail(String contactEmail) {
 		this.contactEmail = contactEmail;
+	}
+
+	public void setContactRole(String contactRole) {
+		this.contactRole = contactRole;
 	}
 
 	public void setEventID(int eventID) {
