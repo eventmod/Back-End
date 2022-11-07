@@ -29,6 +29,9 @@ public class Lineaccounts {
 	@Column(name = "lineacc_kmuttmail")
 	private String lineaccKmuttMail;
 
+	@Column(name = "lineacc_verify")
+	private String lineaccVerify;
+
 	@OneToMany(mappedBy = "lineaccounts", cascade = CascadeType.ALL, orphanRemoval = true)
 	Set<EventsJoined> events_joined;
 
@@ -50,6 +53,10 @@ public class Lineaccounts {
 		return lineaccKmuttMail;
 	}
 
+		public String getLineaccVerify() {
+		return lineaccVerify;
+	}
+
 //	Setter
 
 	public void setLineaccID(int lineaccID) {
@@ -67,5 +74,10 @@ public class Lineaccounts {
 	public void setLineaccKmuttMail(String lineaccKmuttMail) {
 		this.lineaccKmuttMail = lineaccKmuttMail;
 	}
+
+	public void setLineaccVerify(String lineaccVerify) {
+		this.lineaccVerify = lineaccVerify;
+	}
+	
 
 }

@@ -58,6 +58,8 @@ public class LineaccountsController {
       lineaccount.setLineaccID(newLineaccount.getLineaccID());
       lineaccount.setLineaccUserID(newLineaccount.getLineaccUserID());
       lineaccount.setLineaccStudentID(newLineaccount.getLineaccStudentID());
+      lineaccount.setLineaccKmuttMail(newLineaccount.getLineaccKmuttMail());
+      lineaccount.setLineaccVerify(newLineaccount.getLineaccVerify());
       lineaccountsJpaRepository.save(lineaccount);
     }
   }

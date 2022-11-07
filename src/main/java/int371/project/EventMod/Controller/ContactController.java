@@ -73,6 +73,7 @@ public class ContactController {
 		contact.setContactName(newContact.getContactName());
 		contact.setContactPhone(newContact.getContactPhone());
 		contact.setContactEmail(newContact.getContactEmail());
+		contact.setContactRole(newContact.getContactRole());
 		contact.setEventID(newContact.getEventID());
 		contactsJpa.save(contact);
 	}
