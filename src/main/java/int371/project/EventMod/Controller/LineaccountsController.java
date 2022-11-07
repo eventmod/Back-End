@@ -41,6 +41,16 @@ public class LineaccountsController {
 		return lineaccount;
   }
 
+  @GetMapping("/lineByUserID/{userID}")
+  public Lineaccounts showLineaccountsByUserID (@PathVariable String userID) {
+    Lineaccounts lineaccount = this.lineaccountsJpaRepository.findByLineaccUserID(userID);
+		if (lineaccount == null) {
+			throw new EventsException(ExceptionResponse.ERROR_CODE.LINEACCOUNT_ID_DOES_NOT_EXIST,
+					"Lineaccount userID" + " : " + userID + " " + "does not exist");
+		}
+		return lineaccount;
+  }
+
   /* ------------------- POST MAPPING ------------------- */
   @PostMapping("/newLineaccount")
   public void newLineaccount (@RequestBody Lineaccounts newLineaccount) throws Exception {
