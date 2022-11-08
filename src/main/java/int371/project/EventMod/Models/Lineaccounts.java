@@ -29,7 +29,7 @@ public class Lineaccounts {
 	@Column(name = "lineacc_kmuttmail")
 	private String lineaccKmuttMail;
 
-	@Column(name = "lineacc_verify")
+	@Column(name = "lineacc_verifymail")
 	private String lineaccVerify;
 
 	@OneToMany(mappedBy = "lineaccounts", cascade = CascadeType.ALL, orphanRemoval = true)
