@@ -61,7 +61,7 @@ public class Events {
 	private int eventCost;
 
 	@Column(name = "event_collegeyear")
-	private int eventYear;
+	private String eventYear;
 
 	@Column(name = "event_type")
 	private String eventType;
@@ -140,7 +140,7 @@ public class Events {
 		return eventCost;
 	}
 
-	public int getEventYear() {
+	public String getEventYear() {
 		return eventYear;
 	}
 
@@ -226,7 +226,7 @@ public class Events {
 		this.eventCost = eventCost;
 	}
 
-	public void setEventYear(int eventYear) {
+	public void setEventYear(String eventYear) {
 		this.eventYear = eventYear;
 	}
 
