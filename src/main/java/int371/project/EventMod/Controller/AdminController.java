@@ -31,7 +31,7 @@ public class AdminController {
     return adminsJpaRepository.findAll();
   }
 
-  @GetMapping("/admin/{id}")
+  @GetMapping("/admin/{adminsID}")
   public Admins showAdminsByID (@PathVariable int adminsID) {
     Admins admins = this.adminsJpaRepository.findById(adminsID).orElse(null);
 		if (admins == null) {

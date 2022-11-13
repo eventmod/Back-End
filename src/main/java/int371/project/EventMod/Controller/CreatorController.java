@@ -39,7 +39,7 @@ public class CreatorController {
     return creatorsJpaRepository.findAll();
   }
 
-  @GetMapping("/creator/{id}")
+  @GetMapping("/creator/{creatorsID}")
   public Creators showCreatorsByID (@PathVariable int creatorsID) {
     Creators creators = this.creatorsJpaRepository.findById(creatorsID).orElse(null);
 		if (creators == null) {
