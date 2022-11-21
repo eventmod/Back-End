@@ -41,9 +41,9 @@ public class EventsJoined {
 	public int getEventID() {
 		return eventID;
 	}
-
-	public int getLineaccID() {
-		return lineaccID;
+	
+	public Lineaccounts getLineaccounts() {
+		return lineaccounts;
 	}
 
 //	Setter
