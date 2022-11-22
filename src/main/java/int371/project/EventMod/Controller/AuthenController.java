@@ -130,6 +130,18 @@ public class AuthenController {
     }
   }
 
+  @PutMapping("/resetPassword")
+  public void resetPassword (@RequestParam("id") int id) throws Exception {
+    AuthenticationUser user = accountsJpaRepository.findById(id).orElse(null);
+    if (user == null) {
+      throw new Exception();
+    } else {
+      String encodedPassword = passwordEncoder.encode("password");
+      user.setPassword(encodedPassword);
+      accountsJpaRepository.save(user);
+    }
+  }
+
   @DeleteMapping("/delAccount/{accountID}")
   public void delAccount (@PathVariable int accountID) {
     accountsJpaRepository.deleteById(accountID);
