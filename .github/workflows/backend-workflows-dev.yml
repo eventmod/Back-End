@@ -42,8 +42,14 @@ jobs:
             cd backend/
             git checkout dev
             docker-compose -f docker-compose-dev.yml up -d
-  notify:
+  checkhealthy:
     needs: deploy
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check Health Backend
+        run: curl https://dev.eventmod.net/api/checkHealth | grep "Healthy"
+  notify:
+    needs: checkhealthy
     runs-on: ubuntu-20.04
     steps:
       - uses: snow-actions/line-notify@v1.0.0
