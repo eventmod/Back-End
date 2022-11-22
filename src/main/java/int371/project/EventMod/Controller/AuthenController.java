@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -112,6 +113,22 @@ public class AuthenController {
     // System.out.println(tk);
 		return new JwtResponse(tk);
 	}
+
+  @PutMapping("/changePassword")
+  public void changePassword(@RequestParam("id") int id, @RequestParam("oldpassword") String oldPassword, @RequestParam("newpassword") String newPassword) throws Exception {
+    AuthenticationUser user = accountsJpaRepository.findById(id).orElse(null);
+    if (user == null) {
+      throw new Exception();
+    } else {
+      if (!passwordEncoder.matches(oldPassword, user.getPassword())) {
+        throw new Exception();
+      } else {
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        user.setPassword(encodedPassword);
+        accountsJpaRepository.save(user);
+      }
+    }
+  }
 
   @DeleteMapping("/delAccount/{accountID}")
   public void delAccount (@PathVariable int accountID) {
